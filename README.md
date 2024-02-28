@@ -18,24 +18,34 @@ git clone https://github.com/ciphermusic/dashboard-mvp.git
 cd dashboard-mvp/
 ```
 
-1. Install all packages
+1. Install package dependencies
 
 ```
 npm i
 ```
 
-2. Run Development Server
+### Development 👨🏻‍💻
+
+2. Run local dev server
 
 ```
 npm run dev
 ```
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+### Production 🚀
 
-3. Build your project
+3. Build your project to use in production
 
 ```
 npm run build
 ```
+
+4. Start the Next application in production
+
+```
+npm run start
+```
+
 
 
