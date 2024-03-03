@@ -25,8 +25,12 @@ npm i
 ```
 
 ### Development 👨🏻‍💻
+2. Configure database .env credentials
 
-2. Run local dev server
+Create a .env file in the root of the project and add .env credentials located on drive
+```
+
+3. Run local dev server
 
 ```
 npm run dev
@@ -35,13 +39,13 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ### Production 🚀
 
-3. Build your project to use in production
+4. Build your project to use in production
 
 ```
 npm run build
 ```
 
-4. Start the Next application in production
+5. Start the Next application in production
 
 ```
 npm run start
