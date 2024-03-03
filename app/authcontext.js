@@ -5,7 +5,7 @@ const AuthContext = createContext();
 
 export function useAuth() {
   const context = useContext(AuthContext);
-  console.log(context);
+  console.log("CONTEXT: " + context);
   return context;
 }
 
@@ -15,12 +15,10 @@ export function AuthProvider({ children }) {
   // Effect to check active sessions and set user
   useEffect(() => {
     const session = supabase.auth.getSession();
-
     setUser(session?.user ?? null);
 
     const { data } = supabase.auth.onAuthStateChange((event, session) => {
       console.log(event, session);
-
       setUser(session?.user ?? null);
     });
 
@@ -29,26 +27,11 @@ export function AuthProvider({ children }) {
     };
   }, []);
 
-  // // Login function
-  const login = async (email, password) => {
-    const { error, user } = await supabase.auth.signIn({ email, password });
-    if (error) throw error;
-    setUser(user);
-  };
-
-  // // Logout function
-  // const logout = async () => {
-  //   const { error } = await supabase.auth.signOut();
-  //   if (error) throw error;
-  //   setUser(null);
-  // };
-
   // Check if user is logged in
-  const isLoggedIn = () => {
+  const isLoggedIn = async () => {
     // console.log("heyyyyy", user);
-    return !!user
+    return !!user;
   };
-
   return (
     <AuthContext.Provider value={{ user, isLoggedIn }}>
       {children}

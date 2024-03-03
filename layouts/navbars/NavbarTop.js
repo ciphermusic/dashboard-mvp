@@ -1,5 +1,6 @@
 // import node module libraries
 import { Menu } from 'react-feather';
+import { useEffect, useState } from 'react'
 import Link from 'next/link';
 import {
 	Nav,
@@ -13,15 +14,38 @@ import QuickMenu from 'layouts/QuickMenu';
 
 import {supabase} from '../../data/utils/supabaseClient';
 
+import { useRouter } from 'next/navigation';
+
 const NavbarTop = (props) => {
+	const [session, setSession] = useState(null);
+	const router = useRouter();
+
+	useEffect(() => {
+		const fetchSession = async () => {
+		  const { data, error } = await supabase.auth.getSession();
+		  if (error) {
+			console.log("Couldn't load session: " + error);
+		  } else {
+			setSession(data);
+		  }
+		};
+	
+		fetchSession();
+	
+		const { data } = supabase.auth.onAuthStateChange((event, session) => {
+			setSession(session);
+		});
+	  }, []);
 
 	const signOut = async () =>{
-		const { error } = await supabase.auth.signOut()
+		const { error } = await supabase.auth.signOut();
 		if (error) {
 			console.log(error)
 			return
 		}
+
 		console.log('signed out')
+		router.push('/authentication/sign-in')
 	}
 
 	return (
@@ -44,23 +68,31 @@ const NavbarTop = (props) => {
 				</div>
 				{/* Quick Menu */}
 				<Nav className="navbar-right-wrap ms-2 d-flex nav-top-wrap">
-				{/* <div>
-					<Link href="" className="btn btn-blue">Sign up test</Link>
-				</div> */}
-				<Link href="/authentication/sign-in" className="btn btn-white">
-  					Sign in
-				</Link>
-				<Link href="/authentication/sign-up" className="btn btn-white">
-  					Sign up
-				</Link>
-				<Button onClick={signOut}>
-					Sign Out
-				</Button>
+				{!session ? (
+					<div>
+						<Link href="/authentication/sign-in" className="btn btn-white">
+							Sign in
+						</Link>
+						<Link href="/authentication/sign-up" className="btn btn-white">
+							Sign up
+						</Link>
+					</div>
+				) : (
+					<div style={{ padding: '0 10px' }}>
+						<Button style={{ marginRight: '10px' }} variant="outline-success" disabled>
+							Welcome {session && session.user ? session.user.email : ''}!
+						</Button>
+						<Button onClick={signOut}>
+							Sign Out
+						</Button>
+					</div>
+				)}
 					<QuickMenu />
 				</Nav>
 			</div>
 		</Navbar>
 	);
+
 };
 
 export default NavbarTop;
