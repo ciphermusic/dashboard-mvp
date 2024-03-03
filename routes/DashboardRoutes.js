@@ -46,7 +46,7 @@ export const DashboardMenu = [
 			{ id: uuid(), link: '/pages/pricing', name: 'Pricing'},
 			{ id: uuid(), link: '/not-found', name: '404 Error' }
 		]
-	},	
+	},
 	{
 		id: uuid(),
 		title: 'Authentication',
@@ -62,7 +62,7 @@ export const DashboardMenu = [
 		title: 'Layouts',
 		icon: 'layout',
 		link: '/layout-vertical'
-	},	
+	},
 	{
 		id: uuid(),
 		title: 'UI COMPONENTS',
@@ -131,23 +131,6 @@ export const DashboardMenu = [
 				]
 			}
 		]
-	},	
-	{
-		id: uuid(),
-		title: 'Documentation',
-		grouptitle: true
-	},
-	{
-		id: uuid(),
-		title: 'Changelog',
-		icon: 'git-pull-request',
-		link: '/changelog'
-	},
-	{
-		id: uuid(),
-		title: 'Download',
-		icon: 'download',
-		link: 'https://codescandy.gumroad.com/l/dashui-nextjs'
 	}
 ];
 
