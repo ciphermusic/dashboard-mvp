@@ -4,13 +4,26 @@ import Link from 'next/link';
 import {
 	Nav,
 	Navbar,
-	Form
+	Form,
+	Button
 } from 'react-bootstrap';
 
 // import sub components
 import QuickMenu from 'layouts/QuickMenu';
 
+import {supabase} from '../../data/utils/supabaseClient';
+
 const NavbarTop = (props) => {
+
+	const signOut = async () =>{
+		const { error } = await supabase.auth.signOut()
+		if (error) {
+			console.log(error)
+			return
+		}
+		console.log('signed out')
+	}
+
 	return (
 		<Navbar expanded="lg" className="navbar-classic navbar navbar-expand-lg">
 			<div className='d-flex justify-content-between w-100'>
@@ -34,10 +47,15 @@ const NavbarTop = (props) => {
 				{/* <div>
 					<Link href="" className="btn btn-blue">Sign up test</Link>
 				</div> */}
-
+				<Link href="/authentication/sign-in" className="btn btn-white">
+  					Sign in
+				</Link>
 				<Link href="/authentication/sign-up" className="btn btn-white">
   					Sign up
 				</Link>
+				<Button onClick={signOut}>
+					Sign Out
+				</Button>
 					<QuickMenu />
 				</Nav>
 			</div>

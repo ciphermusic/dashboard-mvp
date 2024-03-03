@@ -1,6 +1,7 @@
 'use client'
 // import node module libraries
 import { useState } from 'react';
+import { AuthProvider } from '../authcontext'; // Adjust the path as necessary
 
 // import theme style scss file
 import 'styles/theme.scss';
@@ -32,7 +33,9 @@ export default function DashboardLayout({ children }) {
 						}}
 					/>
 				</div>
-				{children}
+				<AuthProvider>
+					{children}
+				</AuthProvider>
 			</div>
 		</div>
 	)

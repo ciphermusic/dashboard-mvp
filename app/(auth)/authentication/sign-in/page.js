@@ -6,9 +6,29 @@ import Link from 'next/link';
 
 // import hooks
 import useMounted from 'hooks/useMounted';
+import { supabase } from '../../../../data/utils/supabaseClient'
+
+import { useRouter } from 'next/navigation';
 
 const SignIn = () => {
   const hasMounted = useMounted();
+  const router = useRouter();
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+  
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: e.target.elements.username.value,
+      password: e.target.elements.password.value,
+    })
+  
+    if (error) {
+      console.log(error);
+    } else {
+      router.push('/');
+    }
+  }
+
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col xxl={4} lg={6} md={8} xs={12} className="py-8 py-xl-0">
@@ -22,7 +42,7 @@ const SignIn = () => {
             </div>
             {/* Form */}
             {hasMounted &&
-              <Form>
+              <Form onSubmit={onFormSubmit}>
                 {/* Username */}
                 <Form.Group className="mb-3" controlId="username">
                   <Form.Label>Username or email</Form.Label>

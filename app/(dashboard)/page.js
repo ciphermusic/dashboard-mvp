@@ -15,54 +15,64 @@ import { ActiveProjects, Teams,
 // import required data files
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
 
+import { useAuth } from '../authcontext';
+
 const Home = () => {
-    return (
-        <Fragment>
-            <div className="bg-primary pt-10 pb-21"></div>
-            <Container fluid className="mt-n22 px-6">
-                <Row>
-                    <Col lg={12} md={12} xs={12}>
-                        {/* Page header */}
-                        <div>
-                            <div className="d-flex justify-content-between align-items-center">
-                                <div className="mb-2 mb-lg-0">
-                                    <h3 className="mb-0  text-white">Projects</h3>
-                                </div>
+    const { isLoggedIn } = useAuth();
+        
+    return (   
+        <div>
+            {isLoggedIn() ? (
+                <Fragment>
+                    <div className="bg-primary pt-10 pb-21"></div>
+                    <Container fluid className="mt-n22 px-6">
+                        <Row>
+                            <Col lg={12} md={12} xs={12}>
+                                {/* Page header */}
                                 <div>
-                                    <Link href="#" className="btn btn-white">Create New Project</Link>
+                                    <div className="d-flex justify-content-between align-items-center">
+                                        <div className="mb-2 mb-lg-0">
+                                            <h3 className="mb-0  text-white">Projects</h3>
+                                        </div>
+                                        <div>
+                                            <Link href="#" className="btn btn-white">Create New Project</Link>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
-                    </Col>
-                    {ProjectsStatsData.map((item, index) => {
-                        return (
-                            <Col xl={3} lg={6} md={12} xs={12} className="mt-6" key={index}>
-                                <StatRightTopIcon info={item} />
                             </Col>
-                        )
-                    })}
-                </Row>
+                            {ProjectsStatsData.map((item, index) => {
+                                return (
+                                    <Col xl={3} lg={6} md={12} xs={12} className="mt-6" key={index}>
+                                        <StatRightTopIcon info={item} />
+                                    </Col>
+                                )
+                            })}
+                        </Row>
 
-                {/* Active Projects  */}
-                <ActiveProjects />
+                        {/* Active Projects  */}
+                        <ActiveProjects />
 
-                <Row className="my-6">
-                    <Col xl={4} lg={12} md={12} xs={12} className="mb-6 mb-xl-0">
+                        <Row className="my-6">
+                            <Col xl={4} lg={12} md={12} xs={12} className="mb-6 mb-xl-0">
 
-                        {/* Tasks Performance  */}
-                        <TasksPerformance />
+                                {/* Tasks Performance  */}
+                                <TasksPerformance />
 
-                    </Col>
-                    {/* card  */}
-                    <Col xl={8} lg={12} md={12} xs={12}>
+                            </Col>
+                            {/* card  */}
+                            <Col xl={8} lg={12} md={12} xs={12}>
 
-                        {/* Teams  */}
-                        <Teams />
+                                {/* Teams  */}
+                                <Teams />
 
-                    </Col>
-                </Row>
-            </Container>
-        </Fragment>
+                            </Col>
+                        </Row>
+                    </Container>
+                </Fragment>
+            ) : (
+                <p>User is not logged in</p>
+            )}
+        </div>
     )
 }
 export default Home;
