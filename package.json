@@ -21,7 +21,7 @@
     "nextjs-template",
     "react-dashboard",
     "bootstrap 5"
-    ],
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -29,6 +29,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.39.7",
     "@vercel/analytics": "^1.0.1",
     "apexcharts": "^3.41.1",
     "bootstrap": "^5.3.1",
