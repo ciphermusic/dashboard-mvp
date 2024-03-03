@@ -8,17 +8,27 @@ import Link from 'next/link';
 import useMounted from 'hooks/useMounted';
 import { supabase } from '../../../../data/utils/supabaseClient'
 
-const onFormSubmit = async (e) => {
-  e.preventDefault();
-  console.log("Code is run!")
-  const { data, error } = await supabase.auth.signUp({
-    email: e.target.elements.email.value,
-    password: 'example-password',
-  })
-}
+import { useRouter } from 'next/navigation';
 
 const SignUp = () => {
   const hasMounted = useMounted();
+  const router = useRouter();
+
+  const onFormSubmit = async (e) => {
+    e.preventDefault();
+    console.log("Code is run!")
+    const { data, error } = await supabase.auth.signUp({
+      email: e.target.elements.email.value,
+      password: 'example-password',
+    })
+
+    if (error) {
+      console.log(error);
+    } else {
+      router.push('/');
+    }
+  }
+  
   return (
     <Row className="align-items-center justify-content-center g-0 min-vh-100">
       <Col xxl={4} lg={6} md={8} xs={12} className="py-8 py-xl-0">
