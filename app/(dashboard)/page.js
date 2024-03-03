@@ -15,8 +15,6 @@ import { ActiveProjects, Teams,
 // import required data files
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
 
-import { supabase } from '../utils/supabaseClient'
-
 const Home = () => {
     return (
         <Fragment>

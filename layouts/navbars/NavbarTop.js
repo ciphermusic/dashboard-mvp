@@ -31,6 +31,13 @@ const NavbarTop = (props) => {
 				</div>
 				{/* Quick Menu */}
 				<Nav className="navbar-right-wrap ms-2 d-flex nav-top-wrap">
+				{/* <div>
+					<Link href="" className="btn btn-blue">Sign up test</Link>
+				</div> */}
+
+				<Link href="/authentication/sign-up" className="btn btn-white">
+  					Sign up
+				</Link>
 					<QuickMenu />
 				</Nav>
 			</div>

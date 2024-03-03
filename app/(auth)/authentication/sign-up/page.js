@@ -6,6 +6,16 @@ import Link from 'next/link';
 
 // import hooks
 import useMounted from 'hooks/useMounted';
+import { supabase } from '../../../../data/utils/supabaseClient'
+
+const onFormSubmit = async (e) => {
+  e.preventDefault();
+  console.log("Code is run!")
+  const { data, error } = await supabase.auth.signUp({
+    email: e.target.elements.email.value,
+    password: 'example-password',
+  })
+}
 
 const SignUp = () => {
   const hasMounted = useMounted();
@@ -22,7 +32,7 @@ const SignUp = () => {
             </div>
             {/* Form */}
             {hasMounted && 
-            <Form>
+            <Form onSubmit={onFormSubmit}>
               {/* Username */}
               <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Username or email</Form.Label>
