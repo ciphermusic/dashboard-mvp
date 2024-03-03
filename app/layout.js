@@ -1,6 +1,8 @@
 // import theme style scss file
 import 'styles/theme.scss';
 
+import { Analytics } from "@vercel/analytics/react"
+
 export const metadata = {
     title: 'Cipher Dashboard',
     description: 'Cipher Music is a sync licensing platform for music labels and artists. We help get music into films, TV shows, advertisements, video games, and more.',
@@ -13,6 +15,7 @@ export default function RootLayout({ children }) {
             <body className='bg-light'>
                 {children}
             </body>
+            <Analytics />
         </html>
     )
 }
