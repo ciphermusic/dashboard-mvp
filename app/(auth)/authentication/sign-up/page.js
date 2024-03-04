@@ -9,21 +9,24 @@ import useMounted from 'hooks/useMounted';
 import { supabase } from '../../../../data/utils/supabaseClient'
 
 import { useRouter } from 'next/navigation';
+import { useState } from 'react';
 
 const SignUp = () => {
   const hasMounted = useMounted();
   const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState(''); // State to hold error message
 
   const onFormSubmit = async (e) => {
     e.preventDefault();
-    console.log("Code is run!")
+    setErrorMessage('');
+
     const { data, error } = await supabase.auth.signUp({
       email: e.target.elements.email.value,
       password: 'example-password',
     })
 
     if (error) {
-      console.log(error);
+      setErrorMessage(error.message);
     } else {
       router.push('/');
     }
@@ -46,26 +49,27 @@ const SignUp = () => {
               {/* Username */}
               <Form.Group className="mb-3" controlId="username">
                 <Form.Label>Username or email</Form.Label>
-                <Form.Control type="text" name="username" placeholder="User Name" required="" />
+                <Form.Control type="text" name="username" placeholder="User Name" required="" style={{ borderColor: errorMessage ? 'red' : '' }}/>
               </Form.Group>
 
               {/* Email */}
               <Form.Group className="mb-3" controlId="email">
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" name="email" placeholder="Enter address here" required="" />
+                <Form.Control type="email" name="email" placeholder="Enter address here" required="" style={{ borderColor: errorMessage ? 'red' : '' }}/>
               </Form.Group>
 
               {/* Password */}
               <Form.Group className="mb-3" controlId="password">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" name="password" placeholder="**************" required="" />
+                <Form.Control type="password" name="password" placeholder="**************" required="" style={{ borderColor: errorMessage ? 'red' : '' }}/>
               </Form.Group>
 
               {/* Confirm Password */}
               <Form.Group className="mb-3" controlId="confirm-password">
                 <Form.Label>Confirm Password</Form.Label>
-                <Form.Control type="password" name="confirm-password" placeholder="**************" required="" />
+                <Form.Control type="password" name="confirm-password" placeholder="**************" required="" style={{ borderColor: errorMessage ? 'red' : '' }}/>
               </Form.Group>
+              {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
 
               {/* Checkbox */}
               <div className="mb-3">
