@@ -28,7 +28,7 @@ export function AuthProvider({ children }) {
   }, []);
 
   // Check if user is logged in
-  const isLoggedIn = async () => {
+  const isLoggedIn = () => {
     // console.log("heyyyyy", user);
     return !!user;
   };
