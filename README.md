@@ -3,7 +3,8 @@
 
 ![dashui-free-nextjs-admin-template](https://user-images.githubusercontent.com/68774600/231716707-3da30d19-b826-4692-b03a-fed41376d250.jpg)
 
- 
+[Click here to view Dev deployment 👨🏻‍💻](https://dashboard-mvp-five.vercel.app/)
+
 
 ##  🚀 Getting Started 
 
@@ -27,6 +28,7 @@ npm i
 ### Development 👨🏻‍💻
 2. Configure database .env credentials
 
+```
 Create a .env file in the root of the project and add .env credentials located on drive
 ```
 
@@ -35,7 +37,7 @@ Create a .env file in the root of the project and add .env credentials located o
 ```
 npm run dev
 ```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then, open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
 ### Production 🚀
 
