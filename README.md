@@ -1,8 +1,6 @@
 # [Cipher Dashboard]()
  Based off of Dash UI template - https://github.com/codescandy/dashui-free-nextjs-admin-template
 
-![dashui-free-nextjs-admin-template](https://user-images.githubusercontent.com/68774600/231716707-3da30d19-b826-4692-b03a-fed41376d250.jpg)
-
 [Click here to view Dev deployment 👨🏻‍💻](https://dashboard-mvp-five.vercel.app/)
 
 
