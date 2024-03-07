@@ -25,6 +25,14 @@ const SignUp = () => {
       password: 'example-password',
     })
 
+    // console.log("user data", data.user.identities)
+
+    // Code for handling when user already exists, supabase doesn't return an error
+    // https://github.com/supabase/gotrue-js/issues/513
+    // const userAlreadyExists = !!data.user.identities;
+    // if (userAlreadyExists) {
+    //   setErrorMessage('User already exists. Please sign in.')
+    // }
     if (error) {
       setErrorMessage(error.message);
     } else {
@@ -40,7 +48,7 @@ const SignUp = () => {
           {/* Card body */}
           <Card.Body className="p-6">
             <div className="mb-4">
-              <Link href="/"><Image src="/images/brand/logo/logo-primary.svg" className="mb-2" alt="" /></Link>
+              <Link href="/"><div style={{ fontSize: '36px', fontWeight: 'bold' }}>Cipher</div></Link>
               <p className="mb-6">Please enter your user information.</p>
             </div>
             {/* Form */}
