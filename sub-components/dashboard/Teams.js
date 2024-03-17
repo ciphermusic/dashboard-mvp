@@ -32,13 +32,10 @@ const Teams = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu align={'end'}>
                     <Dropdown.Item eventKey="1">
-                        Action
+                        View Info
                     </Dropdown.Item>
                     <Dropdown.Item eventKey="2">
-                        Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item eventKey="3">
-                        Something else here
+                        Copy email
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
@@ -48,14 +45,14 @@ const Teams = () => {
     return (
         <Card className="h-100">
             <Card.Header className="bg-white py-4">
-                <h4 className="mb-0">Teams </h4>
+                <h4 className="mb-0">Team </h4>
             </Card.Header>
             <Table responsive className="text-nowrap">
                 <thead className="table-light">
                     <tr>
                         <th>Name</th>
                         <th>Role</th>
-                        <th>Last Activity</th>
+                        <th>Assignments</th>
                         <th></th>
                     </tr>
                 </thead>
