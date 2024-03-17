@@ -16,7 +16,7 @@ import { ActiveProjects, Teams,
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
 
 import { useAuth } from '../authcontext';
-import LandingPage from './pages/landing-page/page';
+// import LandingPage from './pages/landing-page';
 // app/(dashboard)/page.js
 
 const Home = () => {
@@ -74,7 +74,14 @@ const Home = () => {
                     </Container>
                 </Fragment>
             ) : (
-                <LandingPage />
+                <Container className="d-flex vh-100">
+                    <Row className="m-auto align-self-center">
+                        <Col className="text-center">
+                        <h1 classname='mb-5'>Cipher</h1>
+                        <p>The Infrastructure of the Modern Music Industry</p>
+                        </Col>
+                    </Row>
+                </Container>
             )}
         </div>
     )
