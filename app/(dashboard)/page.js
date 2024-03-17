@@ -16,6 +16,8 @@ import { ActiveProjects, Teams,
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
 
 import { useAuth } from '../authcontext';
+import LandingPage from './pages/landing-page/page';
+// app/(dashboard)/page.js
 
 const Home = () => {
     const { isLoggedIn } = useAuth();
@@ -70,7 +72,7 @@ const Home = () => {
                     </Container>
                 </Fragment>
             ) : (
-                <p>User is not logged in</p>
+                <LandingPage />
             )}
         </div>
     )

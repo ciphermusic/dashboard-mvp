@@ -45,7 +45,7 @@ const NavbarTop = (props) => {
 		}
 
 		console.log('signed out')
-		router.push('/authentication/sign-in')
+		router.push('/')
 	}
 
 	return (
