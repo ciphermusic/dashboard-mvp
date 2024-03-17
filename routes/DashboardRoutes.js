@@ -62,7 +62,7 @@ export const DashboardMenu = [
 		children: [
 			{ id: uuid(), link: '/pages/billing', name: 'Bank Accounts'},
 			{ id: uuid(), link: '/pages/invoices', name: 'Invoices'},
-			{ id: uuid(), link: '/pages/pending-payments', name: 'Invoices'},
+			{ id: uuid(), link: '/pages/pending-payments', name: 'Pending Payments'},
 		]
 	},
 	{
