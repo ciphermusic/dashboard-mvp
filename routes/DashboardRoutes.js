@@ -26,76 +26,50 @@ import { v4 as uuid } from 'uuid';
 export const DashboardMenu = [
 	{
 		id: uuid(),
-		title: 'Dashboard',
+		title: 'Deals',
 		icon: 'home',
 		link: '/'
 	},
 	{
 		id: uuid(),
-		title: 'LAYOUTS & PAGES',
+		title: 'Settings',
 		grouptitle: true
 	},
 	{
 		id: uuid(),
-		title: 'Pages',
+		title: 'Templates',
 		icon: 'layers',
 		children: [
-			{ id: uuid(), link: '/pages/profile', name: 'Profile' },
-			{ id: uuid(), link: '/pages/settings', name: 'Settings'},
-			{ id: uuid(), link: '/pages/billing', name: 'Billing' },
-			{ id: uuid(), link: '/pages/pricing', name: 'Pricing'},
-			{ id: uuid(), link: '/not-found', name: '404 Error' }
+			{ id: uuid(), link: '/pages/iuoa-templates', name: 'Intended Use of Assets' },
+			{ id: uuid(), link: '/pages/license-templates', name: 'Licenses'},
 		]
 	},
 	{
 		id: uuid(),
-		title: 'Authentication',
-		icon: 'lock',
+		title: 'Team',
+		icon: 'users',
+		link: '/pages/team',
 		children: [
-			{ id: uuid(), link: '/authentication/sign-in', name: 'Sign In' },
-			{ id: uuid(), link: '/authentication/sign-up', name: 'Sign Up' },
-			{ id: uuid(), link: '/authentication/forget-password', name: 'Forget Password'}			
+			{ id: uuid(), link: '/pages/team', name: 'Members'},
+			{ id: uuid(), link: '/pages/roles', name: 'Roles'},
 		]
 	},
 	{
 		id: uuid(),
-		title: 'Layouts',
-		icon: 'layout',
+		title: 'Billing',
+		icon: 'credit-card',
+		link: '/pages/billing',
+		children: [
+			{ id: uuid(), link: '/pages/billing', name: 'Bank Accounts'},
+			{ id: uuid(), link: '/pages/invoices', name: 'Invoices'},
+		]
+	},
+	{
+		id: uuid(),
+		title: 'Settings',
+		icon: 'settings',
 		link: '/layout-vertical'
 	},
-	{
-		id: uuid(),
-		title: 'Menu Level',
-		icon: 'corner-left-down',
-		children: [
-			{ 
-				id: uuid(), 
-				link: '#', 
-				title: 'Two Level',
-				children: [
-					{ id: uuid(), link: '#', name: 'NavItem 1'},
-					{ id: uuid(), link: '#', name: 'NavItem 2' }
-				]
-			},
-			{ 
-				id: uuid(), 
-				link: '#', 
-				title: 'Three Level',
-				children: [
-					{ 
-						id: uuid(), 
-						link: '#', 
-						title: 'NavItem 1',
-						children: [
-							{ id: uuid(), link: '#', name: 'NavChildItem 1'},
-							{ id: uuid(), link: '#', name: 'NavChildItem 2'}
-						]
-					},
-					{ id: uuid(), link: '#', name: 'NavItem 2' }
-				]
-			}
-		]
-	}
 ];
 
 export default DashboardMenu;
