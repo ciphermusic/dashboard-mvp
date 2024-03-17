@@ -1,38 +1,31 @@
 import {
 	Briefcase,
     ListTask,
-    People,
+    Archive,
     Bullseye
 } from 'react-bootstrap-icons';
 
 export const ProjectsStats = [
     {
        id:1,
-       title : "Projects",
-       value : 18,
+       title : "New",
+       value : 3,
        icon: <Briefcase size={18}/>,
-       statInfo: '<span className="text-dark me-2">2</span> Completed' 
+       statInfo: '<span className="text-dark me-2">2</span> Unread Deals' 
     },
     {
         id:2,
-        title : "Active Task",
-        value : 132,
+        title : "Active",
+        value : 8,
         icon: <ListTask size={18}/>,
-        statInfo: '<span className="text-dark me-2">28</span> Completed' 
+        statInfo: '<span className="text-dark me-2">3</span> New Tasks' 
      },
      {
-        id:3,
-        title : "Teams",
-        value : 12,
-        icon: <People size={18}/>,
-        statInfo: '<span className="text-dark me-2">1</span> Completed' 
-     },
-     {
-        id:4,
-        title : "Productivity",
-        value : '76%',
-        icon: <Bullseye size={18}/>,
-        statInfo: '<span className="text-dark me-2">5%</span> Completed' 
-     }
+         id:2,
+         title : "Archived",
+         value : 6,
+         icon: <Archive size={18}/>,
+         statInfo: '<span className="text-dark me-2">  </span> aaa' 
+      },
 ];
 export default ProjectsStats;

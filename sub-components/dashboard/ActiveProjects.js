@@ -11,15 +11,16 @@ const ActiveProjects = () => {
             <Col md={12} xs={12}>
                 <Card>
                     <Card.Header className="bg-white  py-4">
-                        <h4 className="mb-0">Active Projects</h4>
+                        <h4 className="mb-0">Active Deals</h4>
                     </Card.Header>
                     <Table responsive className="text-nowrap mb-0">
                         <thead className="table-light">
                             <tr>
-                                <th>Project name</th>
-                                <th>Hours</th>
-                                <th>priority</th>
-                                <th>Members</th>
+                                <th>Song name</th>
+                                <th>Artist</th>
+                                <th>Requester</th>
+                                <th>Priority</th>
+                                <th>Stakeholders</th>
                                 <th>Progress</th>
                             </tr>
                         </thead>
@@ -31,16 +32,17 @@ const ActiveProjects = () => {
                                             <div className="d-flex align-items-center">
                                                 <div>
                                                     <div className={`icon-shape icon-md border p-4 rounded-1 ${item.brandLogoBg}`}>
-                                                        <Image src={item.brandLogo} alt="" />
+                                                        <Image src={item.albumArt} alt="" style={{ width: '40px', height: '40px' }} />
                                                     </div>
                                                 </div>
                                                 <div className="ms-3 lh-1">
                                                     <h5 className=" mb-1">
-                                                        <Link href="#" className="text-inherit">{item.projectName}</Link></h5>
+                                                        <Link href="#" className="text-inherit">{item.songName}</Link></h5>
                                                 </div>
                                             </div>
                                         </td>
-                                        <td className="align-middle">{item.hours}</td>
+                                        <td className="align-middle">{item.artist}</td>
+                                        <td className="align-middle">{item.requester}</td>
                                         <td className="align-middle"><span className={`badge bg-${item.priorityBadgeBg}`}>{item.priority}</span></td>
                                         <td className="align-middle">
                                             <div className="avatar-group">
@@ -68,7 +70,7 @@ const ActiveProjects = () => {
                         </tbody>
                     </Table>
                     <Card.Footer className="bg-white text-center">
-                        <Link href="#" className="link-primary">View All Projects</Link>
+                        <Link href="#" className="link-primary">View All Active Deals</Link>
                     </Card.Footer>
                 </Card>
             </Col>
