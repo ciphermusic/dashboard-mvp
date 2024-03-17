@@ -32,13 +32,10 @@ const Teams = () => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu align={'end'}>
                     <Dropdown.Item eventKey="1">
-                        Action
+                        View Info
                     </Dropdown.Item>
                     <Dropdown.Item eventKey="2">
-                        Another action
-                    </Dropdown.Item>
-                    <Dropdown.Item eventKey="3">
-                        Something else here
+                        Copy email
                     </Dropdown.Item>
                 </Dropdown.Menu>
             </Dropdown>
