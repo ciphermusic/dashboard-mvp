@@ -27,6 +27,8 @@ import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
 
+import DealFlow from 'sub-components/dealflow/DealTimeline';
+
 
 export {
    ActiveProjects,
@@ -47,5 +49,7 @@ export {
    EmailSetting,  
    GeneralSetting, 
    Notifications, 
-   Preferences
+   Preferences,
+
+   DealFlow
 };
