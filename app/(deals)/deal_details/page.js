@@ -100,7 +100,7 @@ const Deals = () => {
           </Row>
         </Row>
 
-        <Row className="align-items-center justify-content-center g-0 min-vh-100">
+        <Row className="align-items-center justify-content-center g-0">
             <VerticalTimeline layout={'1-column-left'}>
                 <VerticalTimelineElement
                   visible = {true}
