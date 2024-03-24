@@ -4,6 +4,7 @@
 import { Fragment, useState } from "react";
 import { Row, Col, Container, Card, ProgressBar, ModalHeader } from 'react-bootstrap';
 
+
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import DealTimelineElementType from 'data/types/DealTimelineElementType';
 import ModalContent from "./modals/ModalContent";
@@ -26,18 +27,64 @@ const Deals = () => {
 
   return (
     <div>
-      <Fragment>
-        <div className="bg-primary pt-10 pb-21"></div>
-        <Container fluid className="mt-n22 px-6">
-          <Row>
-            <Col lg={12} md={12} xs={12}>
-                {/* Page header */}
-                <div>
-                    <div className="d-flex justify-content-center align-items-center">
-                        <div className="mb-3 mb-lg-0">
-                            <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold' }}>
-                              {'"you won\'t even try" - Bill Nye - #SF031924'}
-                            </h3>
+    <Fragment>
+    <div className="bg-primary pt-10 pb-21"></div>
+    <Container fluid className="mt-n22 px-6">
+        <Row>
+          <Col lg={12} md={12} xs={12}>
+              {/* Page header */}
+              <div>
+                  <div className="d-flex justify-content-center align-items-center">
+                      <div className="mb-3 mb-lg-0">
+                          <h3 className="mb-2  text-white" style={{ fontSize: '18px'}}>
+                            {'Song Name'}
+                          </h3>
+                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
+                            {'"you won\'t even try" - '}
+                          </h3>
+                      </div>
+                      <div className="mb-3 mb-lg-0">
+                          <h3 className="mb-2  text-white" style={{ fontSize: '18px' }}>
+                            {'Requester'}
+                          </h3>
+                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px'}}>
+                            {'Bill Nye -'}
+                          </h3>
+                      </div>
+                      <div className="mb-3 mb-lg-0">
+                          <h3 className="mb-2  text-white" style={{ fontSize: '18px'}}>
+                            {'Deal Code'}
+                          </h3>
+                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
+                            {'#SF031924'}
+                          </h3>
+                      </div>
+                  </div>
+              </div>
+          </Col>
+          <Row className="justify-content-center">
+              <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                <Card>
+                    <Card.Body>
+                        <div className="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h4 className="mb-0">Requester Budget</h4>
+                            </div>
+                        </div>
+                        <div>
+                            <h1 className="fw-bold">$265k - 340k</h1>
+                            {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
+                        </div>
+                    </Card.Body>
+                </Card>
+              </Col>
+              <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                <Card>
+                    <Card.Body>
+                        <div className="d-flex justify-content-between align-items-center mb-3">
+                            <div>
+                                <h4 className="mb-0">Total Stakeholders</h4>
+                            </div>
                         </div>
                     </div>
                 </div>
