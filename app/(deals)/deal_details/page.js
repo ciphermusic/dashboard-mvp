@@ -62,6 +62,7 @@ const Deals = () => {
                   </div>
               </div>
           </Col>
+          </Row>
           <Row className="justify-content-center">
               <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
                 <Card>
@@ -86,8 +87,8 @@ const Deals = () => {
                                 <h4 className="mb-0">Total Stakeholders</h4>
                             </div>
                         </div>
-                    </div>
-                </div>
+                    </Card.Body>
+                </Card>
             </Col>
             <Row className="justify-content-center">
                 <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
