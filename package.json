@@ -29,6 +29,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@react-pdf/renderer": "^3.4.0",
     "@supabase/supabase-js": "^2.39.7",
     "@vercel/analytics": "^1.2.2",
     "apexcharts": "^3.41.1",
@@ -46,6 +47,7 @@
     "react-dom": "18.2.0",
     "react-dropzone": "^14.2.3",
     "react-feather": "^2.0.10",
+    "react-pdf": "^7.7.1",
     "react-responsive": "^9.0.2",
     "react-syntax-highlighter": "^15.5.0",
     "react-vertical-timeline-component": "^3.6.0",

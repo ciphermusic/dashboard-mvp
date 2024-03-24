@@ -1,13 +1,30 @@
 'use client'
-import { Fragment } from "react";
-import { Row, Col, Container, Card, ProgressBar } from 'react-bootstrap';
+
+// import node module libraries
+import { Fragment, useState } from "react";
+import { Row, Col, Container, Card, ProgressBar, ModalHeader } from 'react-bootstrap';
+
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import { StatRightTopIcon } from "widgets";
+import DealTimelineElementType from 'data/types/DealTimelineElementType';
+import ModalContent from "./modals/ModalContent";
+import { Modal, Button } from 'react-bootstrap';
 
 import 'react-vertical-timeline-component/style.min.css';
 
 const Deals = () => {
+
+  const [showModal, setShowModal] = useState(false);
+  const [modalType, setModalType] = useState(null);
+
+  const handleShowModal = (type) => {
+    setModalType(type);
+    setShowModal(true);
+    console.log("Setting modal type to", type);
+  };
+
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <div>
     <Fragment>
@@ -45,6 +62,7 @@ const Deals = () => {
                   </div>
               </div>
           </Col>
+          </Row>
           <Row className="justify-content-center">
               <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
                 <Card>
@@ -69,66 +87,93 @@ const Deals = () => {
                                 <h4 className="mb-0">Total Stakeholders</h4>
                             </div>
                         </div>
-                        <div>
-                            <h1 className="fw-bold">8</h1>
-                            {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
-                        </div>
                     </Card.Body>
                 </Card>
-              </Col>
-              <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
-                <Card>
-                    <Card.Body>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <h4 className="mb-0">Deadline</h4>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 className="fw-bold">05/15/2024</h1>
-                        </div>
-                    </Card.Body>
-                </Card>
-              </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col xl={12} lg={6} md={12} xs={12} className="mt-3" key={"abc"}>
-                <Card>
-                  <Card.Body>
-                      <Row>
-                        <div className="align-middle text-dark">
-                            <div className="float-start me-3">45%</div>
-                            <div className="mt-2">
-                                <ProgressBar now="45" style={{ height: '5px' }} />
-                            </div>
-                        </div>
-                      </Row>
-                  </Card.Body>
-              </Card>
             </Col>
+            <Row className="justify-content-center">
+                <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                  <Card>
+                      <Card.Body>
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                              <div>
+                                  <h4 className="mb-0">Requester Budget</h4>
+                              </div>
+                          </div>
+                          <div>
+                              <h1 className="fw-bold">$265k - 340k</h1>
+                              {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
+                          </div>
+                      </Card.Body>
+                  </Card>
+                </Col>
+                <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                  <Card>
+                      <Card.Body>
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                              <div>
+                                  <h4 className="mb-0">Total Stakeholders</h4>
+                              </div>
+                          </div>
+                          <div>
+                              <h1 className="fw-bold">8</h1>
+                              {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
+                          </div>
+                      </Card.Body>
+                  </Card>
+                </Col>
+                <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                  <Card>
+                      <Card.Body>
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                              <div>
+                                  <h4 className="mb-0">Deadline</h4>
+                              </div>
+                          </div>
+                          <div>
+                              <h1 className="fw-bold">05/15/2024</h1>
+                          </div>
+                      </Card.Body>
+                  </Card>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <Col xl={12} lg={6} md={12} xs={12} className="mt-3" key={"abc"}>
+                  <Card>
+                    <Card.Body>
+                        <Row>
+                          <div className="align-middle text-dark">
+                              <div className="float-start me-3">45%</div>
+                              <div className="mt-2">
+                                  <ProgressBar now="45" style={{ height: '5px' }} />
+                              </div>
+                          </div>
+                        </Row>
+                    </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Row>
-        </Row>
 
-        <Row className="align-items-center justify-content-center g-0">
+          <Row className="align-items-center justify-content-center g-0">
             <VerticalTimeline layout={'1-column-left'}>
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  contentStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
-                  contentArrowStyle={{ borderRight: '7px solid  rgb(97,75,255,255)' }}
                   date="2011 - present"
                   iconStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
                   icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-1-circle-fill" viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"/>
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title" style={{ color: 'white' }}>Creative Director</h3>
-                  <h4 className="vertical-timeline-element-subtitle" style={{ color: 'white' }}>Miami, FL</h4>
-                  <p>
-                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
-                  </p>
+                <button onClick={() => handleShowModal(DealTimelineElementType.REQUEST)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                    <h3 className="vertical-timeline-element-title">Request Filed</h3>
+                    <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                    <p>
+                      Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                    </p>
+                </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
@@ -141,11 +186,13 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title">Art Director</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Master Owner</h3>
                   <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
                   <p>
                     Creative Direction, User Experience, Visual Design, SEO, Online Marketing
                   </p>
+                </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
@@ -158,11 +205,13 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
                   <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
                     User Experience, Visual Design
                   </p>
+                </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
@@ -175,16 +224,48 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.SIGN_OFF)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Sign Off</h3>
                   <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
                     User Experience, Visual Design
                   </p>
+                </button>
+                </VerticalTimelineElement>
+                <VerticalTimelineElement
+                  visible = {true}
+                  className="vertical-timeline-element--work"
+                  date="2008 - 2010"
+                  iconStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
+                  icon={
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-4-circle-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"/>
+                    </svg>
+                  }
+                >
+                <button onClick={() => handleShowModal(DealTimelineElementType.PAYMENT)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Payment</h3>
+                  <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+                  <p>
+                    User Experience, Visual Design
+                  </p>
+                </button>
                 </VerticalTimelineElement>
             </VerticalTimeline>
-      </Row>
-   </Container>
-   </Fragment>
+        </Row>
+      </Container>
+        <Modal show={showModal} onHide={handleCloseModal} size="xl" centered>
+          <Modal.Header closeButton>
+            <Modal.Title>Detail View</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>
+            <ModalContent type={modalType} />
+          </Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+          </Modal.Footer>
+        </Modal>
+    </Fragment>
    </div>
   )
 }
