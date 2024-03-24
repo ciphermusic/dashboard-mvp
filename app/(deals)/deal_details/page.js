@@ -132,7 +132,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="2011 - present"
+                  date="Submitted on: 12:34 PM ET 03/19/2024"
                   iconStyle={{ background: 'rgb(75,255,96,1)'}}
                   icon={
                     <SendCheck/>
@@ -140,17 +140,16 @@ const Deals = () => {
                   style={{ opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.REQUEST)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
-                    <h3 className="vertical-timeline-element-title">Request Filed</h3>
-                    <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                    <h3 className="vertical-timeline-element-title">Request Received</h3>
                     <p>
-                      Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                      Click to view the details of the request.
                     </p>
                 </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="2010 - 2011"
+                  date="Approved on: 16:12 PM ET 03/29/2024"
                   iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
                   icon={
                     <HandThumbsUpFill/>
@@ -159,16 +158,15 @@ const Deals = () => {
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Master Owner</h3>
-                  <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
                   <p>
-                    Creative Direction, User Experience, Visual Design, SEO, Online Marketing
+                    Click to view the terms proposed by the Master Licensor.
                   </p>
                 </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="2008 - 2010"
+                  date="Approved on: 1:22 PM ET 03/30/2024"
                   iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
                   icon={
                     <HandThumbsUpFill/>
@@ -177,9 +175,8 @@ const Deals = () => {
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
-                  <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
-                    User Experience, Visual Design
+                  Click to view the terms proposed by Publishers, Composers and Other Rights Owners.
                   </p>
                 </button>
                 </VerticalTimelineElement>
@@ -194,9 +191,8 @@ const Deals = () => {
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.SIGN_OFF)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Sign Off</h3>
-                  <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
-                    User Experience, Visual Design
+                    Click to view the drafted contract and status updates.
                   </p>
                 </button>
                 </VerticalTimelineElement>
@@ -211,9 +207,8 @@ const Deals = () => {
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.PAYMENT)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Payment</h3>
-                  <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
-                    User Experience, Visual Design
+                    Click to view the drafted invoice and select payment method.
                   </p>
                 </button>
                 </VerticalTimelineElement>
