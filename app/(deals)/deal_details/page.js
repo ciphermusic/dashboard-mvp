@@ -30,7 +30,7 @@ const Deals = () => {
                   <div className="d-flex justify-content-center align-items-center">
                       <div className="mb-3 mb-lg-0">
                           <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold' }}>
-                            "you won't even try" - Bill Nye - #SF031924
+                            {'"you won\'t even try" - Bill Nye - #SF031924'}
                           </h3>
                       </div>
                   </div>
