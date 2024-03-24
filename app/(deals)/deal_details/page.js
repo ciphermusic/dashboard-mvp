@@ -5,24 +5,23 @@ import { Fragment, useState } from "react";
 import { Row, Col, Container, Card, ProgressBar, ModalHeader } from 'react-bootstrap';
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
-import { StatRightTopIcon } from "widgets";
+import DealTimelineElementType from 'data/types/DealTimelineElementType';
+import ModalContent from "./modals/ModalContent";
 import { Modal, Button } from 'react-bootstrap';
 
 import 'react-vertical-timeline-component/style.min.css';
 
 const Deals = () => {
 
-  // State to control the visibility of the modal
   const [showModal, setShowModal] = useState(false);
-  // State to manage the content of the modal, based on which timeline element is clicked
-  const [modalContent, setModalContent] = useState('');
+  const [modalType, setModalType] = useState(null);
 
-  const handleShowModal = (content) => {
-    setModalContent(content);
+  const handleShowModal = (type) => {
+    setModalType(type);
     setShowModal(true);
+    console.log("Setting modal type to", type);
   };
 
-  // Function to handle closing the modal
   const handleCloseModal = () => setShowModal(false);
 
   return (
@@ -120,8 +119,8 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                <button onClick={() => handleShowModal('Creative Director')} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
-                    <h3 className="vertical-timeline-element-title">Creative Director</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.REQUEST)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                    <h3 className="vertical-timeline-element-title">Request Filed</h3>
                     <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
                     <p>
                       Creative Direction, User Experience, Visual Design, Project Management, Team Leading
@@ -139,11 +138,13 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title">Art Director</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Master Owner</h3>
                   <h4 className="vertical-timeline-element-subtitle">San Francisco, CA</h4>
                   <p>
                     Creative Direction, User Experience, Visual Design, SEO, Online Marketing
                   </p>
+                </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
@@ -156,11 +157,13 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
                   <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
                     User Experience, Visual Design
                   </p>
+                </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
@@ -173,25 +176,45 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title">Web Designer</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.SIGN_OFF)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Sign Off</h3>
                   <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
                   <p>
                     User Experience, Visual Design
                   </p>
+                </button>
+                </VerticalTimelineElement>
+                <VerticalTimelineElement
+                  visible = {true}
+                  className="vertical-timeline-element--work"
+                  date="2008 - 2010"
+                  iconStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
+                  icon={
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-4-circle-fill" viewBox="0 0 16 16">
+                      <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M7.519 5.057c-.886 1.418-1.772 2.838-2.542 4.265v1.12H8.85V12h1.26v-1.559h1.007V9.334H10.11V4.002H8.176zM6.225 9.281v.053H8.85V5.063h-.065c-.867 1.33-1.787 2.806-2.56 4.218"/>
+                    </svg>
+                  }
+                >
+                <button onClick={() => handleShowModal(DealTimelineElementType.PAYMENT)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Payment</h3>
+                  <h4 className="vertical-timeline-element-subtitle">Los Angeles, CA</h4>
+                  <p>
+                    User Experience, Visual Design
+                  </p>
+                </button>
                 </VerticalTimelineElement>
             </VerticalTimeline>
         </Row>
       </Container>
-
-      <Modal show={showModal} onHide={handleCloseModal}>
+        <Modal show={showModal} onHide={handleCloseModal} size="xl" centered>
           <Modal.Header closeButton>
-            <Modal.Title>{modalContent}</Modal.Title>
+            <Modal.Title>Detail View</Modal.Title>
           </Modal.Header>
-          <Modal.Body>This is where you can add more details about the "{modalContent}" role.</Modal.Body>
+          <Modal.Body>
+            <ModalContent type={modalType} />
+          </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>
-              Send Reminder
-            </Button>
+            <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
           </Modal.Footer>
         </Modal>
     </Fragment>
