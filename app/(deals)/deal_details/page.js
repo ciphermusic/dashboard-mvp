@@ -9,98 +9,114 @@
 // import { DealFlow } from 'sub-components'
 
 // import node module libraries
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Row, Col, Container, Card, ProgressBar } from 'react-bootstrap';
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { StatRightTopIcon } from "widgets";
+import { Modal, Button } from 'react-bootstrap';
 
 import 'react-vertical-timeline-component/style.min.css';
 
 const Deals = () => {
+
+  // State to control the visibility of the modal
+  const [showModal, setShowModal] = useState(false);
+  // State to manage the content of the modal, based on which timeline element is clicked
+  const [modalContent, setModalContent] = useState('');
+
+  // Function to handle opening the modal and setting its content
+  const handleShowModal = (content) => {
+    setModalContent(content);
+    setShowModal(true);
+  };
+
+  // Function to handle closing the modal
+  const handleCloseModal = () => setShowModal(false);
+
   return (
     <div>
-    <Fragment>
-    <div className="bg-primary pt-10 pb-21"></div>
-    <Container fluid className="mt-n22 px-6">
-        <Row>
-          <Col lg={12} md={12} xs={12}>
-              {/* Page header */}
-              <div>
-                  <div className="d-flex justify-content-center align-items-center">
-                      <div className="mb-3 mb-lg-0">
-                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold' }}>
-                            {'"you won\'t even try" - Bill Nye - #SF031924'}
-                          </h3>
-                      </div>
-                  </div>
-              </div>
-          </Col>
-          <Row className="justify-content-center">
-              <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
-                <Card>
-                    <Card.Body>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <h4 className="mb-0">Requester Budget</h4>
-                            </div>
+      <Fragment>
+        <div className="bg-primary pt-10 pb-21"></div>
+        <Container fluid className="mt-n22 px-6">
+          <Row>
+            <Col lg={12} md={12} xs={12}>
+                {/* Page header */}
+                <div>
+                    <div className="d-flex justify-content-center align-items-center">
+                        <div className="mb-3 mb-lg-0">
+                            <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold' }}>
+                              {'"you won\'t even try" - Bill Nye - #SF031924'}
+                            </h3>
                         </div>
-                        <div>
-                            <h1 className="fw-bold">$265k - 340k</h1>
-                            {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
-                        </div>
-                    </Card.Body>
-                </Card>
-              </Col>
-              <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
-                <Card>
-                    <Card.Body>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <h4 className="mb-0">Total Stakeholders</h4>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 className="fw-bold">8</h1>
-                            {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
-                        </div>
-                    </Card.Body>
-                </Card>
-              </Col>
-              <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
-                <Card>
-                    <Card.Body>
-                        <div className="d-flex justify-content-between align-items-center mb-3">
-                            <div>
-                                <h4 className="mb-0">Deadline</h4>
-                            </div>
-                        </div>
-                        <div>
-                            <h1 className="fw-bold">05/15/2024</h1>
-                        </div>
-                    </Card.Body>
-                </Card>
-              </Col>
-          </Row>
-          <Row className="justify-content-center">
-            <Col xl={12} lg={6} md={12} xs={12} className="mt-3" key={"abc"}>
-                <Card>
-                  <Card.Body>
-                      <Row>
-                        <div className="align-middle text-dark">
-                            <div className="float-start me-3">45%</div>
-                            <div className="mt-2">
-                                <ProgressBar now="45" style={{ height: '5px' }} />
-                            </div>
-                        </div>
-                      </Row>
-                  </Card.Body>
-              </Card>
+                    </div>
+                </div>
             </Col>
+            <Row className="justify-content-center">
+                <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                  <Card>
+                      <Card.Body>
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                              <div>
+                                  <h4 className="mb-0">Requester Budget</h4>
+                              </div>
+                          </div>
+                          <div>
+                              <h1 className="fw-bold">$265k - 340k</h1>
+                              {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
+                          </div>
+                      </Card.Body>
+                  </Card>
+                </Col>
+                <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                  <Card>
+                      <Card.Body>
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                              <div>
+                                  <h4 className="mb-0">Total Stakeholders</h4>
+                              </div>
+                          </div>
+                          <div>
+                              <h1 className="fw-bold">8</h1>
+                              {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
+                          </div>
+                      </Card.Body>
+                  </Card>
+                </Col>
+                <Col xl={4} lg={6} md={12} xs={12} className="mt-6" key={"abc"}>
+                  <Card>
+                      <Card.Body>
+                          <div className="d-flex justify-content-between align-items-center mb-3">
+                              <div>
+                                  <h4 className="mb-0">Deadline</h4>
+                              </div>
+                          </div>
+                          <div>
+                              <h1 className="fw-bold">05/15/2024</h1>
+                          </div>
+                      </Card.Body>
+                  </Card>
+                </Col>
+            </Row>
+            <Row className="justify-content-center">
+              <Col xl={12} lg={6} md={12} xs={12} className="mt-3" key={"abc"}>
+                  <Card>
+                    <Card.Body>
+                        <Row>
+                          <div className="align-middle text-dark">
+                              <div className="float-start me-3">45%</div>
+                              <div className="mt-2">
+                                  <ProgressBar now="45" style={{ height: '5px' }} />
+                              </div>
+                          </div>
+                        </Row>
+                    </Card.Body>
+                </Card>
+              </Col>
+            </Row>
           </Row>
-        </Row>
 
-        <Row className="align-items-center justify-content-center g-0">
+          <Row className="align-items-center justify-content-center g-0">
             <VerticalTimeline layout={'1-column-left'}>
                 <VerticalTimelineElement
                   visible = {true}
@@ -110,7 +126,7 @@ const Deals = () => {
                   date="2011 - present"
                   iconStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
                   icon={
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-1-circle-fill" viewBox="0 0 16 16">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-1-circle-fill" viewBox="0 0 16 16">
                       <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M9.283 4.002H7.971L6.072 5.385v1.271l1.834-1.318h.065V12h1.312z"/>
                     </svg>
                   }
@@ -173,9 +189,9 @@ const Deals = () => {
                   </p>
                 </VerticalTimelineElement>
             </VerticalTimeline>
-      </Row>
-   </Container>
-   </Fragment>
+        </Row>
+      </Container>
+    </Fragment>
    </div>
   )
 }
