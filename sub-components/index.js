@@ -27,7 +27,6 @@ import GeneralSetting from 'sub-components/settings/GeneralSetting';
 import Notifications from 'sub-components/settings/Notifications';
 import Preferences from 'sub-components/settings/Preferences';
 
-
 export {
    ActiveProjects,
    TasksPerformance,
@@ -47,5 +46,5 @@ export {
    EmailSetting,  
    GeneralSetting, 
    Notifications, 
-   Preferences
+   Preferences,
 };
