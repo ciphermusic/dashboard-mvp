@@ -1,16 +1,8 @@
 'use client'
-// import node module libraries
-// import { Row, Col, Container } from 'react-bootstrap';
-
-// // import widget as custom components
-// import { PageHeading } from 'widgets'
-
-// // import sub components
-// import { DealFlow } from 'sub-components'
 
 // import node module libraries
 import { Fragment, useState } from "react";
-import { Row, Col, Container, Card, ProgressBar } from 'react-bootstrap';
+import { Row, Col, Container, Card, ProgressBar, ModalHeader } from 'react-bootstrap';
 
 import { VerticalTimeline, VerticalTimelineElement }  from 'react-vertical-timeline-component';
 import { StatRightTopIcon } from "widgets";
@@ -25,7 +17,6 @@ const Deals = () => {
   // State to manage the content of the modal, based on which timeline element is clicked
   const [modalContent, setModalContent] = useState('');
 
-  // Function to handle opening the modal and setting its content
   const handleShowModal = (content) => {
     setModalContent(content);
     setShowModal(true);
@@ -121,8 +112,6 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  contentStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
-                  contentArrowStyle={{ borderRight: '7px solid  rgb(97,75,255,255)' }}
                   date="2011 - present"
                   iconStyle={{ background: 'rgb(97,75,255,255)', color: '#fff' }}
                   icon={
@@ -131,11 +120,13 @@ const Deals = () => {
                     </svg>
                   }
                 >
-                  <h3 className="vertical-timeline-element-title" style={{ color: 'white' }}>Creative Director</h3>
-                  <h4 className="vertical-timeline-element-subtitle" style={{ color: 'white' }}>Miami, FL</h4>
-                  <p>
-                    Creative Direction, User Experience, Visual Design, Project Management, Team Leading
-                  </p>
+                <button onClick={() => handleShowModal('Creative Director')} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                    <h3 className="vertical-timeline-element-title">Creative Director</h3>
+                    <h4 className="vertical-timeline-element-subtitle">Miami, FL</h4>
+                    <p>
+                      Creative Direction, User Experience, Visual Design, Project Management, Team Leading
+                    </p>
+                </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
@@ -191,6 +182,18 @@ const Deals = () => {
             </VerticalTimeline>
         </Row>
       </Container>
+
+      <Modal show={showModal} onHide={handleCloseModal}>
+          <Modal.Header closeButton>
+            <Modal.Title>{modalContent}</Modal.Title>
+          </Modal.Header>
+          <Modal.Body>This is where you can add more details about the "{modalContent}" role.</Modal.Body>
+          <Modal.Footer>
+            <Button variant="secondary" onClick={handleCloseModal}>
+              Send Reminder
+            </Button>
+          </Modal.Footer>
+        </Modal>
     </Fragment>
    </div>
   )
