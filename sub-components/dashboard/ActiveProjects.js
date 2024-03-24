@@ -27,7 +27,7 @@ const ActiveProjects = () => {
                         <tbody>
                             {ActiveProjectsData.map((item, index) => {
                                 return (
-                                    <tr key={index}>
+                                    <tr key={index} onClick={() => window.location.href = '/deal_details'}>
                                         <td className="align-middle">
                                             <div className="d-flex align-items-center">
                                                 <div>
