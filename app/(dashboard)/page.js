@@ -16,8 +16,6 @@ import { ActiveProjects, Teams,
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
 
 import { useAuth } from '../authcontext';
-// import LandingPage from './pages/landing-page';
-// app/(dashboard)/page.js
 
 const Home = () => {
     const { isLoggedIn } = useAuth();
@@ -30,7 +28,6 @@ const Home = () => {
                     <Container fluid className="mt-n22 px-6">
                         <Row>
                             <Col lg={12} md={12} xs={12}>
-                                {/* Page header */}
                                 <div>
                                     <div className="d-flex justify-content-center align-items-center">
                                         <div className="mb-3 mb-lg-0">
