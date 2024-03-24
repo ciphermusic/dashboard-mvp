@@ -1,14 +1,4 @@
 'use client'
-// import node module libraries
-// import { Row, Col, Container } from 'react-bootstrap';
-
-// // import widget as custom components
-// import { PageHeading } from 'widgets'
-
-// // import sub components
-// import { DealFlow } from 'sub-components'
-
-// import node module libraries
 import { Fragment } from "react";
 import { Row, Col, Container, Card, ProgressBar } from 'react-bootstrap';
 
@@ -29,8 +19,27 @@ const Deals = () => {
               <div>
                   <div className="d-flex justify-content-center align-items-center">
                       <div className="mb-3 mb-lg-0">
-                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold' }}>
-                            {'"you won\'t even try" - Bill Nye - #SF031924'}
+                          <h3 className="mb-2  text-white" style={{ fontSize: '18px'}}>
+                            {'Song Name'}
+                          </h3>
+                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
+                            {'"you won\'t even try" - '}
+                          </h3>
+                      </div>
+                      <div className="mb-3 mb-lg-0">
+                          <h3 className="mb-2  text-white" style={{ fontSize: '18px' }}>
+                            {'Requester'}
+                          </h3>
+                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px'}}>
+                            {'Bill Nye -'}
+                          </h3>
+                      </div>
+                      <div className="mb-3 mb-lg-0">
+                          <h3 className="mb-2  text-white" style={{ fontSize: '18px'}}>
+                            {'Deal Code'}
+                          </h3>
+                          <h3 className="mb-0  text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
+                            {'#SF031924'}
                           </h3>
                       </div>
                   </div>
