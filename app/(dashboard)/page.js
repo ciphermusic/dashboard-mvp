@@ -77,7 +77,7 @@ const Home = () => {
                 <Container className="d-flex vh-100">
                     <Row className="m-auto align-self-center">
                         <Col className="text-center">
-                        <h1 classname='mb-5'>Cipher</h1>
+                        <h1 className='mb-5'>Cipher</h1>
                         <p>The Infrastructure of the Modern Music Industry</p>
                         </Col>
                     </Row>
