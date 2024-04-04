@@ -12,6 +12,7 @@ import { Modal, Button } from 'react-bootstrap';
 import { VectorPen, CreditCardFill, GearWideConnected, SendCheck, HandThumbsUpFill } from "react-bootstrap-icons";
 
 import 'react-vertical-timeline-component/style.min.css';
+import getText from "app/api/hello";
 
 const Deals = () => {
 
@@ -223,7 +224,7 @@ const Deals = () => {
             <ModalContent type={modalType} />
           </Modal.Body>
           <Modal.Footer>
-            <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
+            <Button variant="secondary" onClick={getText}>Close</Button>
           </Modal.Footer>
         </Modal>
     </Fragment>
