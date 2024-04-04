@@ -25,7 +25,17 @@ export const getDealState = async () => {
     if (error) {
         console.log("Couldn't load deal state: " + error);
     } else {
-        console.log("Deal state: " + data);
+        console.log("Deal state: " + s);
         return dealState[data];
     }
+}
+
+export const postDealState = async (state) => {
+    const { res, error } = await supabase.from('Deal').update({ state: state });
+    if (error) {
+        console.log("Couldn't update deal state: " + error);
+    } else {
+        console.log("Deal state updated: " + res);
+    }
+    return res.status;
 }
