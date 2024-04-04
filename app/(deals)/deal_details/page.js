@@ -183,7 +183,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="2008 - 2010"
+                  date="Pending Approval"
                   iconStyle={{ background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px' }}
                   icon={
                     <VectorPen />
@@ -199,7 +199,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="2008 - 2010"
+                  date="Pending Approval"
                   iconStyle={{ background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px' }}
                   icon={
                     <CreditCardFill />
