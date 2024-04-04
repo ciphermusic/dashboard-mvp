@@ -11,6 +11,8 @@ const RequestContent = () => {
   const [approvedThird, setApprovedThird] = useState(false);
   const [approvedFourth, setApprovedFourth] = useState(false);
 
+  const [moreInformationRequested, setMoreInformationRequested] = useState(false);
+
   // Function definitions should also be outside the return statement
   const handleClick = (eventKey) => {
     console.log("Approve button clicked!")
@@ -25,6 +27,26 @@ const RequestContent = () => {
     }
     setActiveKey(null);
   };
+
+  const handleClickDeselect = (eventKey) => {
+    console.log("Approve button clicked!")
+    if (eventKey === "1") {
+      setApprovedFirst(false);
+    } else if (eventKey === "2") {
+      setApprovedSecond(false);
+    } else if (eventKey === "3") {
+      setApprovedThird(false);
+    } else if (eventKey === "4") {
+      setApprovedFourth(false);
+    }
+    setActiveKey(null);
+  };
+
+  const handleMoreInformation = () => {
+    console.log("Request More Information button clicked!")
+    setMoreInformationRequested(true);
+    setActiveKey(null);
+  }
 
   return (
     <Container className="mt-5">
@@ -42,7 +64,6 @@ const RequestContent = () => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  {/* Replace these placeholders with actual content */}
                   <p>Song Title: Example</p>
                   <p>Artist/Recording: Example</p>
                   <p>Publisher(s): Example</p>
@@ -51,7 +72,12 @@ const RequestContent = () => {
                     <Form.Label>Feedback for Song Details</Form.Label>
                     <Form.Control as="textarea" rows={3} />
                   </Form.Group>
-                <Button className="mt-2" onClick={() => handleClick("1")}>Approve</Button>
+                {approvedFirst ? (
+                  <Button className="mt-2" onClick={() => handleClickDeselect("1")}>Cancel</Button>
+                ) : (
+                  <Button className="mt-2" onClick={() => handleClick("1")}>Approve</Button>
+                
+                )}
               </Accordion.Body>
             </Card>
             </Accordion.Item>
@@ -65,7 +91,6 @@ const RequestContent = () => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  {/* Replace these placeholders with actual content */}
                   <p>Description of Song Use: Example</p>
                   <p>Timing of Song Use: Example</p>
                 </Card.Body>
@@ -73,7 +98,11 @@ const RequestContent = () => {
                     <Form.Label>Feedback for Usage Description</Form.Label>
                     <Form.Control as="textarea" rows={3} />
                   </Form.Group>
-                <Button className="mt-2" onClick={() => handleClick("2")}>Approve</Button>
+                {approvedSecond ? (
+                  <Button className="mt-2" onClick={() => handleClickDeselect("2")}>Cancel</Button>
+                ) : (
+                  <Button className="mt-2" onClick={() => handleClick("2")}>Approve</Button>
+                )}
               </Accordion.Body>
             </Card>
             </Accordion.Item>
@@ -87,7 +116,6 @@ const RequestContent = () => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  {/* Replace these placeholders with actual content */}
                   <p>Media Rights Requesting: Example</p>
                   <p>Term: Example</p>
                   <p>Territory: Example</p>
@@ -96,7 +124,11 @@ const RequestContent = () => {
                     <Form.Label>Feedback for Rights & Permissions</Form.Label>
                     <Form.Control as="textarea" rows={3} />
                   </Form.Group>
-                <Button className="mt-2" onClick={() => handleClick("3")}>Approve</Button>
+                {approvedThird ? (
+                  <Button className="mt-2" onClick={() => handleClickDeselect("3")}>Cancel</Button>
+                ) : (
+                  <Button className="mt-2" onClick={() => handleClick("3")}>Approve</Button>
+                )}
               </Accordion.Body>
             </Card>
             </Accordion.Item>
@@ -110,26 +142,46 @@ const RequestContent = () => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  {/* Replace these placeholders with actual content */}
                   <p>Production Company Name: Example</p>
                   <p>Production Synopsis: Example</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
-                    <Form.Label>Feedback for Production Details</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
-                  </Form.Group>
-                <Button className="mt-2" onClick={() => handleClick("4")}>Approve</Button>
+                  <Form.Label>Feedback for Production Details</Form.Label>
+                  <Form.Control as="textarea" rows={3} />
+                </Form.Group>
+                {approvedFourth ? (
+                  <Button className="mt-2" onClick={() => handleClickDeselect("4")}>Cancel</Button>
+                ) : (
+                  <Button className="mt-2" onClick={() => handleClick("4")}>Approve</Button>
+                )}
               </Accordion.Body>
             </Card>
             </Accordion.Item>
           </Accordion>
-          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '12px' }}>
-            {(approvedFirst && approvedSecond && approvedThird && approvedFourth) ? (
+          
+          {(approvedFirst && approvedSecond && approvedThird && approvedFourth) ? (
+            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '12px' }}>
               <Button>Approve Request</Button>
-            ) : (
-              <Button>Request More Information</Button>
-            )}
-          </div>
+            </div>
+          ) : (
+            <>
+              {moreInformationRequested ? (
+                <div style={{ marginTop: '12px' }}>
+                  <Form.Group controlId="moreInformation">
+                    <Form.Label>More Information Requested</Form.Label>
+                    <Form.Control as="textarea" rows={3} />
+                    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '12px' }}>
+                      <Button type="submit">Submit Request</Button>
+                    </div>
+                  </Form.Group>
+                </div>
+              ) : (
+                <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '12px' }}>
+                  <Button onClick={handleMoreInformation}>Request More Information</Button>
+                </div>
+              )}         
+            </>
+          )}
         </Col>
       </Row>
     </Container>
