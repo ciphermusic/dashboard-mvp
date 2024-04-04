@@ -31,3 +31,13 @@ export const getDealState = async () => {
         return dealState[data[0].state];
     }
 }
+
+export const postDealState = async (state) => {
+    const { res, error } = await supabase.from('Deal').update({ state: state });
+    if (error) {
+        console.log("Couldn't update deal state: " + error);
+    } else {
+        console.log("Deal state updated: " + res);
+    }
+    return res.status;
+}
