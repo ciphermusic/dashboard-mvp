@@ -1,5 +1,7 @@
 import { supabase } from '../../data/utils/supabaseClient';
 
+import { createClient } from '@supabase/supabase-js'
+
 const dealState = {
 	"New": 0,
 	"Active": 1,
@@ -21,11 +23,11 @@ export const getDealState = async () => {
         supabase
         .from('Deal')
         .select('state');
-
+    
     if (error) {
         console.log("Couldn't load deal state: " + error);
     } else {
-        console.log("Deal state: " + data);
-        return dealState[data];
+        console.log("Deal state: " + data[0].state);
+        return dealState[data[0].state];
     }
 }
