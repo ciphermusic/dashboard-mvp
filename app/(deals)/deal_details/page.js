@@ -1,7 +1,7 @@
 'use client'
 
 // import node module libraries
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Row, Col, Container, Card, ProgressBar, ModalHeader } from 'react-bootstrap';
 
 
@@ -13,10 +13,20 @@ import { VectorPen, CreditCardFill, GearWideConnected, SendCheck, HandThumbsUpFi
 
 import 'react-vertical-timeline-component/style.min.css';
 
-const Deals = () => {
+import { getDealState } from '../../api/api_client';
 
+const Deals = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(null);
+  const [dealState, setDealState] = useState(-1);
+
+  useEffect(() => {
+    const fetchDealState = async () => {
+      const state = await getDealState();
+      setDealState(state);
+    }
+    fetchDealState();
+  }, []);
 
   const handleShowModal = (type) => {
     setModalType(type);
@@ -25,8 +35,14 @@ const Deals = () => {
   };
 
   const handleCloseModal = () => setShowModal(false);
-
-  return (
+  
+  return ( dealState < 0 ? 
+    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+      <div className="spinner-border" role="status" style={{ width: '3rem', height: '3rem', borderWidth: '0.3rem' }}>
+        <span className="sr-only">Loading...</span>
+      </div>
+    </div>
+    : (
     <div>
     <Fragment>
     <div className="bg-primary pt-10 pb-21"></div>
@@ -150,7 +166,12 @@ const Deals = () => {
                   visible = {true}
                   className="vertical-timeline-element--work"
                   date="Approved on: 16:12 PM ET 03/29/2024"
-                  iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
+                  // iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
+                  iconStyle={
+                    dealState < 1
+                      ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
+                      : { background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}
+                  }
                   icon={
                     <HandThumbsUpFill/>
                   }
@@ -229,6 +250,6 @@ const Deals = () => {
     </Fragment>
    </div>
   )
-}
+)}
 
 export default Deals
