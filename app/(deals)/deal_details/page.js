@@ -241,7 +241,7 @@ const Deals = () => {
             <Modal.Title>Detail View</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ModalContent type={modalType} />
+            <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>Close</Button>

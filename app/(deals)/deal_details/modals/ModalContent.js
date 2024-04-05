@@ -6,10 +6,10 @@ import NegoOthersContent from './NegoOthersContent';
 import SignOffContent from './SignOffContent';
 import PaymentContent from './PaymentContent';
 
-const ModalContent = ({ type }) => {
+const ModalContent = ({ type, dealState, setDealState, setShowModal }) => {
   switch (type) {
     case DealTimelineElementType.REQUEST:
-      return <RequestContent />;
+      return <RequestContent dealState={dealState} setDealState={setDealState} setShowModal={setShowModal}/>;
     case DealTimelineElementType.NEGOTIATION_MASTER:
       return <NegoMasterContent />;
     case DealTimelineElementType.NEGOTIATION_OTHER:
