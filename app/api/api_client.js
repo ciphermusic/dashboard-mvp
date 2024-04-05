@@ -18,6 +18,22 @@ const dealState = {
     "Done": 12,
 }
 
+const numberToDealState = {
+	0: "New",
+    1: "Active",
+    2: "Await_Master",
+    3: "Await_Publisher",
+    4: "Await_Other",
+    5: "Email_Master_Sent",
+    6: "Email_Publisher_Sent",
+    7: "Email_Others_Sent",
+    8: "Contract_Sent",
+    9: "Signed",
+    10: "Payment_Sent",
+    11: "Payment_Complete",
+    12: "Done",
+}
+
 export const getDealState = async () => {
     const { data, error } = await 
         supabase
@@ -33,11 +49,11 @@ export const getDealState = async () => {
 }
 
 export const postDealState = async (state) => {
-    const { res, error } = await supabase.from('Deal').update({ state: state });
+    const { error } = await supabase.from('Deal').update({ state: numberToDealState[state] }).eq('id', 1);
     if (error) {
-        console.log("Couldn't update deal state: " + error);
+        console.log("Couldn't update deal state: ");
     } else {
-        console.log("Deal state updated: " + res);
+        console.log("Deal state updated: ");
     }
-    return res.status;
+    return error;
 }

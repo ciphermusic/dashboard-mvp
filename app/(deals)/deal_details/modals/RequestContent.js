@@ -3,6 +3,7 @@ import { Accordion, Card, Button, Container, Row, Col, Form } from 'react-bootst
 import { CheckAll } from  'react-bootstrap-icons';
 import Lottie from "lottie-react";
 import CheckMark from "../../../../public/images/animations/Checkmark.json";
+import { postDealState } from '../../../api/api_client';
 
 const RequestContent = ({dealState, setDealState, setShowModal}) => {
   console.log("Deal state: " + dealState);
@@ -48,13 +49,19 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
     setActiveKey(null);
   };
 
-  const handleApproveRequest = () => {
+  const handleApproveRequest = async () => {
     setApprovedAll(true);
+    
+    const error = await postDealState(1);
 
-    setTimeout(() => {
-      setDealState(dealState + 1);
-      setShowModal(false);
-    }, 800); // 500 milliseconds = 0.5 seconds
+    if (error) {
+      console.log("Error approving request")
+    } else {
+      setTimeout(() => {
+        setDealState(dealState + 1);
+        setShowModal(false);
+      }, 800); // 500 milliseconds = 0.5 seconds
+    }
   }
 
   const handleMoreInformation = () => {
@@ -70,9 +77,8 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
         display: 'flex', 
         justifyContent: 'center', 
         alignItems: 'center', 
-        // height: '100vh' // This assumes you want to center it in the viewport. Adjust the height as necessary.
       }}>
-        <Lottie animationData={CheckMark} style={{ width: '25%', height: '25%' }} />
+        <Lottie animationData={CheckMark} style={{ width: '25%', height: '25%' }} loop="false" />
       </div>
       </Container>
     ) : (
