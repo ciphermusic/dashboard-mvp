@@ -149,11 +149,16 @@ const Deals = () => {
                   visible = {true}
                   className="vertical-timeline-element--work"
                   date="Submitted on: 12:34 PM ET 03/19/2024"
-                  iconStyle={{ background: 'rgb(75,255,96,1)'}}
+                  iconStyle={
+                    dealState < 1
+                      ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
+                      : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
+                  }
                   icon={
                     <SendCheck/>
                   }
-                  style={{ opacity: 0.6 }}
+                  
+                  style={dealState > 0 ? { opacity: 0.6 } : {}}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.REQUEST)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                     <h3 className="vertical-timeline-element-title">Request Received</h3>
@@ -168,14 +173,14 @@ const Deals = () => {
                   date="Approved on: 16:12 PM ET 03/29/2024"
                   // iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
                   iconStyle={
-                    dealState < 1
+                    dealState < 2
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
-                      : { background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}
+                      : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
                   icon={
                     <HandThumbsUpFill/>
                   }
-                  style={{ opacity: 0.6 }}
+                  style={dealState > 1 ? { opacity: 0.6 } : {}}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Master Owner</h3>
@@ -188,11 +193,15 @@ const Deals = () => {
                   visible = {true}
                   className="vertical-timeline-element--work"
                   date="Approved on: 1:22 PM ET 03/30/2024"
-                  iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
+                  iconStyle={
+                    dealState < 2
+                      ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
+                      : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
+                  }
                   icon={
                     <HandThumbsUpFill/>
                   }
-                  style={{ opacity: 0.6 }}
+                  style={dealState > 3 ? { opacity: 0.6 } : {}}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
@@ -205,7 +214,11 @@ const Deals = () => {
                   visible = {true}
                   className="vertical-timeline-element--work"
                   date="Pending Approval"
-                  iconStyle={{ background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px' }}
+                  iconStyle={
+                    dealState < 2
+                      ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
+                      : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
+                  }
                   icon={
                     <VectorPen />
                   }
@@ -221,7 +234,11 @@ const Deals = () => {
                   visible = {true}
                   className="vertical-timeline-element--work"
                   date="Pending Approval"
-                  iconStyle={{ background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px' }}
+                  iconStyle={
+                    dealState < 2
+                      ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
+                      : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
+                  }
                   icon={
                     <CreditCardFill />
                   }
