@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
 import { Accordion, Card, Button, Container, Row, Col, Form } from 'react-bootstrap';
 import { CheckAll } from  'react-bootstrap-icons';
+import Lottie from "lottie-react";
+import CheckMark from "../../../../public/images/animations/Checkmark.json";
 
-const RequestContent = () => {
+const RequestContent = ({dealState, setDealState, setShowModal}) => {
+  console.log("Deal state: " + dealState);
+  console.log("Set Deal state: " + setDealState);
   const [activeKey, setActiveKey] = useState(null); // Initially, the first item is active
 
   // State initialization should be outside the return statement
@@ -12,6 +16,8 @@ const RequestContent = () => {
   const [approvedFourth, setApprovedFourth] = useState(false);
 
   const [moreInformationRequested, setMoreInformationRequested] = useState(false);
+
+  const [approvedAll, setApprovedAll] = useState(false);
 
   // Function definitions should also be outside the return statement
   const handleClick = (eventKey) => {
@@ -42,6 +48,15 @@ const RequestContent = () => {
     setActiveKey(null);
   };
 
+  const handleApproveRequest = () => {
+    setApprovedAll(true);
+
+    setTimeout(() => {
+      setDealState(dealState + 1);
+      setShowModal(false);
+    }, 800); // 500 milliseconds = 0.5 seconds
+  }
+
   const handleMoreInformation = () => {
     console.log("Request More Information button clicked!")
     setMoreInformationRequested(true);
@@ -49,6 +64,18 @@ const RequestContent = () => {
   }
 
   return (
+    approvedAll ? (
+      <Container className="mt-5">
+      <div style={{ 
+        display: 'flex', 
+        justifyContent: 'center', 
+        alignItems: 'center', 
+        // height: '100vh' // This assumes you want to center it in the viewport. Adjust the height as necessary.
+      }}>
+        <Lottie animationData={CheckMark} style={{ width: '25%', height: '25%' }} />
+      </div>
+      </Container>
+    ) : (
     <Container className="mt-5">
       <Row>
         <Col md={12}>
@@ -161,7 +188,7 @@ const RequestContent = () => {
           
           {(approvedFirst && approvedSecond && approvedThird && approvedFourth) ? (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '12px' }}>
-              <Button>Approve Request</Button>
+              <Button onClick={handleApproveRequest}>Approve Request</Button>
             </div>
           ) : (
             <>
@@ -185,7 +212,7 @@ const RequestContent = () => {
         </Col>
       </Row>
     </Container>
-  );
+  ));
 }
 
 export default RequestContent;
