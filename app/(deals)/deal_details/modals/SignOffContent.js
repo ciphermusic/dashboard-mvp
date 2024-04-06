@@ -19,14 +19,14 @@ const SignOffContent = ({ generateLicense, setGenerateLicense }) => {
       setGenerateLicense(true);  // Update the generateLicense state
       setLoading(false); // Optionally, stop the loading process
     }, 2000);
-};
+  };
 
   if (generateLicense) {
     return (
       <div>
         <p>Details about the Sign Off...</p>
         <iframe
-          src="http://localhost:3000/images/pdfs/License.pdf"
+          src="/images/pdfs/License.pdf"
           width="100%"
           height="600px"
           style={{ border: 'none' }}
