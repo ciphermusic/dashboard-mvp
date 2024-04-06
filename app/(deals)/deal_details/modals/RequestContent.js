@@ -125,7 +125,7 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p>Description of Song Use: The song "Everybody" by Don Broco sets a vibrant and energetic tone for our commercial, which showcases the new Ford F-150 in a series of dynamic, high-energy scenes. The track begins playing as the truck is seen traversing various terrains - city streets, mountain roads, and desert landscapes. As the beat of the song picks up, the commercial cuts to scenes of the truck's interior features, highlighting its robustness and versatility. The song underlines the theme of empowerment and going beyond limits, aligning perfectly with the Ford F-150's brand message of strength, reliability, and adventure.</p>
+                  <p>Description of Song Use: The song &quot;Everybody&quot; by Don Broco sets a vibrant and energetic tone for our commercial, which showcases the new Ford F-150 in a series of dynamic, high-energy scenes. The track begins playing as the truck is seen traversing various terrains - city streets, mountain roads, and desert landscapes. As the beat of the song picks up, the commercial cuts to scenes of the truck&apos;s interior features, highlighting its robustness and versatility. The song underlines the theme of empowerment and going beyond limits, aligning perfectly with the Ford F-150&apos;s brand message of strength, reliability, and adventure.</p>
                   <p>Timing of Song Use: Full length (up to 3 minutes)</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
@@ -176,9 +176,14 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p id="info" style={{ whiteSpace: 'pre-wrap' }}>{"Production Company Name: \nFord Motor Company\n1 American Rd, Dearborn, MI 48126\nContact: Marketing Department\nEmail: marketing@ford.com\nPhone: 1-800-392-3673"}</p>
-                  <p>Production Name: "Unleash the New F-150"</p>
-                  <p>Production Synopsis: This commercial introduces the new Ford F-150, emphasizing its advanced features, durability, and design. Through a sequence of visually captivating scenes, the commercial aims to convey the essence of freedom and the spirit of adventure that the F-150 inspires. Targeting a wide audience of truck enthusiasts, families, and adventurers, the commercial will showcase the vehicle's capabilities in handling different lifestyles and adventures, reinforcing the Ford F-150's position as America's best-selling truck.</p>
+                  <p id="info" style={{ whiteSpace: 'pre-wrap' }}>Production Company Name: 
+                  Ford Motor Company
+                  1 American Rd, Dearborn, MI 48126
+                  Contact: Marketing Department
+                  Email: marketing@ford.com
+                  Phone: 1-800-392-3673</p>
+                  <p>Production Name: &quot;Unleash the New F-150&quot;</p>
+                  <p>Production Synopsis: This commercial introduces the new Ford F-150, emphasizing its advanced features, durability, and design. Through a sequence of visually captivating scenes, the commercial aims to convey the essence of freedom and the spirit of adventure that the F-150 inspires. Targeting a wide audience of truck enthusiasts, families, and adventurers, the commercial will showcase the vehicle&apos;s capabilities in handling different lifestyles and adventures, reinforcing the Ford F-150&apos;s position as America&apos;s best-selling truck.</p>
                   <p>Production Release / Air Date: TBD</p>
                   <p>Additional Information: The song will primarily be used within the commercial framework as outlined, with potential extensions into behind-the-scenes content and promotional material for social media. We are open to negotiating terms for an extended usage period or broader media coverage as needed.</p>
                 </Card.Body>
