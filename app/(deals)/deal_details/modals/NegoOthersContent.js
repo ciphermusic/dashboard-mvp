@@ -12,8 +12,8 @@ const NegoOthersContent = () => (
             <thead className="table-light">
                 <tr>
                     <th>Name</th>
-                    <th>Role</th>
-                    <th>Assignments</th>
+                    <th>Contact</th>
+                    <th>Status</th>
                     <th></th>
                 </tr>
             </thead>
