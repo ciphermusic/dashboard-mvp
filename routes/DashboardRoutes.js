@@ -32,11 +32,6 @@ export const DashboardMenu = [
 	},
 	{
 		id: uuid(),
-		title: 'Settings',
-		grouptitle: true
-	},
-	{
-		id: uuid(),
 		title: 'Templates',
 		icon: 'layers',
 		children: [
