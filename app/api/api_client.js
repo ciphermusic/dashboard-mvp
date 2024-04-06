@@ -51,9 +51,59 @@ export const getDealState = async () => {
 export const postDealState = async (state) => {
     const { error } = await supabase.from('Deal').update({ state: numberToDealState[state] }).eq('id', 1);
     if (error) {
-        console.log("Couldn't update deal state: ");
+        console.log("Couldn't update deal state");
     } else {
-        console.log("Deal state updated: ");
+        console.log("Deal state updated");
     }
     return error;
+}
+
+export const getUserId = async () => {
+    const { data: { user } } = await supabase.auth.getUser()
+    return user;
+}
+
+export const getCurrentPrice = async () => {
+    const currentPrice = await supabase.from('Deal').select('price').eq('id', 1);
+    const jsonbObject = currentPrice.data[0].price;
+
+    return jsonbObject;
+}
+
+export const postDealPrice = async ({userId, price}) => {
+    const jsonbObject = await getCurrentPrice();
+    
+    jsonbObject[userId] = price;
+
+    const { error } = await supabase.from('Deal').update({ price: jsonbObject }).eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't update deal price");
+    } else {
+        console.log("Deal price updated");
+    }
+
+    return error;
+}
+
+export const getGenerateLicense = async () => {
+    const { data, error } = await supabase.from('Deal').select('generate_license').eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't load generate license: " + error);
+    } else {
+        console.log("Generate license: " + data[0].generate_license);
+        return data[0].generate_license;
+    }
+}
+
+export const postGenerateLicense = async (generate_license) => {
+    const { error } = await supabase.from('Deal').update({generate_license: generate_license}).eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't update generate license");
+    } else {
+        console.log("Generate license updated");
+        return error;
+    }
 }

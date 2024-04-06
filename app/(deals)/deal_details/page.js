@@ -13,15 +13,36 @@ import { VectorPen, CreditCardFill, GearWideConnected, SendCheck, HandThumbsUpFi
 
 import 'react-vertical-timeline-component/style.min.css';
 
-import { getDealState } from '../../api/api_client';
+import { getDealState, getCurrentPrice, getGenerateLicense } from '../../api/api_client';
 
 const Deals = () => {
   const [showModal, setShowModal] = useState(false);
   const [modalType, setModalType] = useState(null);
   const [dealState, setDealState] = useState(-1);
 
+  const [currentPrice, setCurrentPrice] = useState(0);
+
+  const [generateLicense, setGenerateLicense] = useState(false);
+
   useEffect(() => {
     const fetchDealState = async () => {
+      const price = await getCurrentPrice();
+
+      let maxValue = null;
+      for (const [key, value] of Object.entries(price)) {
+        // If maxValue is null or the current value is greater than maxValue, update maxValue and maxKey
+        if (maxValue === null || value > maxValue) {
+          maxValue = value;
+        }
+      }
+
+      if (maxValue !== null) {
+        setCurrentPrice(maxValue);
+      }
+
+      const generateLicense = await getGenerateLicense();
+      setGenerateLicense(generateLicense);
+
       const state = await getDealState();
       setDealState(state);
     }
@@ -56,23 +77,23 @@ const Deals = () => {
                           <h3 className="mb-2 text-white" style={{ fontSize: '18px'}}>
                             {'Song Name'}
                           </h3>
-                          <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '30px' }}>
-                            {'"Everybody"'}
+                          <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
+                            {'"Everybody" -'}
                           </h3>
                       </div>
                       <div className="mb-3 mb-lg-0">
                           <h3 className="mb-2 text-white" style={{ fontSize: '18px' }}>
                             {'Requester'}
                           </h3>
-                          <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '30px'}}>
-                            {'Ford Motor Company'}
+                          <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px'}}>
+                            {'Ford Motor Company -'}
                           </h3>
                       </div>
                       <div className="mb-3 mb-lg-0">
                           <h3 className="mb-2 text-white" style={{ fontSize: '18px'}}>
                             {'Deal Code'}
                           </h3>
-                          <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '30px' }}>
+                          <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
                             {'#SF031924'}
                           </h3>
                       </div>
@@ -100,12 +121,11 @@ const Deals = () => {
                       <Card.Body>
                           <div className="d-flex justify-content-between align-items-center mb-3">
                               <div>
-                                  <h4 className="mb-0">Total Stakeholders</h4>
+                                  <h4 className="mb-0">Current Aside Price</h4>
                               </div>
                           </div>
                           <div>
-                              <h1 className="fw-bold">8</h1>
-                              {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
+                              <h1 className="fw-bold">{currentPrice == 0 ? "Price Not Set" : "$" + currentPrice}</h1>
                           </div>
                       </Card.Body>
                   </Card>
@@ -131,9 +151,9 @@ const Deals = () => {
                     <Card.Body>
                         <Row>
                           <div className="align-middle text-dark">
-                              <div className="float-start me-3">45%</div>
+                              <div className="float-start me-3">{Math.round(dealState / 13 * 100)}%</div>
                               <div className="mt-2">
-                                  <ProgressBar now="45" style={{ height: '5px' }} />
+                                  <ProgressBar now={dealState / 13 * 100} style={{ height: '5px' }} />
                               </div>
                           </div>
                         </Row>
@@ -148,9 +168,9 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="Submitted on: 12:34 PM ET 03/19/2024"
+                  date={dealState < 2 ? "Pending Approval" : "Approved on: 12:34 PM ET 03/19/2024"}
                   iconStyle={
-                    dealState < 1
+                    dealState < 2
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
@@ -158,7 +178,7 @@ const Deals = () => {
                     <SendCheck/>
                   }
                   
-                  style={dealState > 0 ? { opacity: 0.6 } : {}}
+                  style={dealState < 2 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.REQUEST)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                     <h3 className="vertical-timeline-element-title">Request Received</h3>
@@ -170,17 +190,17 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="Approved on: 16:12 PM ET 03/29/2024"
+                  date = {dealState < 4 ? "Pending Approval": "Approved on: 16:12 PM ET 03/29/2024"}
                   // iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
                   iconStyle={
-                    dealState < 2
+                    dealState < 4
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
                   icon={
                     <HandThumbsUpFill/>
                   }
-                  style={dealState > 1 ? { opacity: 0.6 } : {}}
+                  style={dealState < 4 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Master Owner</h3>
@@ -194,14 +214,14 @@ const Deals = () => {
                   className="vertical-timeline-element--work"
                   date="Approved on: 1:22 PM ET 03/30/2024"
                   iconStyle={
-                    dealState < 2
+                    dealState < 5
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
                   icon={
                     <HandThumbsUpFill/>
                   }
-                  style={dealState > 3 ? { opacity: 0.6 } : {}}
+                  style={dealState < 5 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
@@ -215,7 +235,7 @@ const Deals = () => {
                   className="vertical-timeline-element--work"
                   date="Pending Approval"
                   iconStyle={
-                    dealState < 2
+                    dealState < 5
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
@@ -235,7 +255,7 @@ const Deals = () => {
                   className="vertical-timeline-element--work"
                   date="Pending Approval"
                   iconStyle={
-                    dealState < 2
+                    dealState < 5
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
@@ -258,7 +278,8 @@ const Deals = () => {
             <Modal.Title>Detail View</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal}/>
+            <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal} 
+              setCurrentPrice={setCurrentPrice} generateLicense={generateLicense} setGenerateLicense={setGenerateLicense}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
