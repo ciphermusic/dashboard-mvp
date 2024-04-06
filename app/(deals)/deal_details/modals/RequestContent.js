@@ -6,8 +6,6 @@ import CheckMark from "../../../../public/images/animations/Checkmark.json";
 import { postDealState } from '../../../api/api_client';
 
 const RequestContent = ({dealState, setDealState, setShowModal}) => {
-  console.log("Deal state: " + dealState);
-  console.log("Set Deal state: " + setDealState);
   const [activeKey, setActiveKey] = useState(null); // Initially, the first item is active
 
   // State initialization should be outside the return statement
@@ -52,13 +50,13 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
   const handleApproveRequest = async () => {
     setApprovedAll(true);
     
-    const error = await postDealState(1);
+    const error = await postDealState(2);
 
     if (error) {
       console.log("Error approving request")
     } else {
       setTimeout(() => {
-        setDealState(dealState + 1);
+        setDealState(2);
         setShowModal(false);
       }, 800); // 500 milliseconds = 0.5 seconds
     }
