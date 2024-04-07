@@ -13,7 +13,7 @@ import { VectorPen, CreditCardFill, GearWideConnected, SendCheck, HandThumbsUpFi
 
 import 'react-vertical-timeline-component/style.min.css';
 
-import { getDealState, getCurrentPrice, getGenerateLicense } from '../../api/api_client';
+import { getDealState, getCurrentPrice, getGenerateLicense, getPublishers, getWriters } from '../../api/api_client';
 
 const Deals = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,6 +23,9 @@ const Deals = () => {
   const [currentPrice, setCurrentPrice] = useState(0);
 
   const [generateLicense, setGenerateLicense] = useState(false);
+  
+  const [publishers, setPublishers] = useState(null);
+  const [writers, setWriters] = useState(null);
 
   useEffect(() => {
     const fetchDealState = async () => {
@@ -39,6 +42,12 @@ const Deals = () => {
       if (maxValue !== null) {
         setCurrentPrice(maxValue);
       }
+
+      const publishers = await getPublishers();
+      setPublishers(publishers);
+
+      const writers = await getWriters();
+      setWriters(writers);
 
       const generateLicense = await getGenerateLicense();
       setGenerateLicense(generateLicense);
@@ -212,7 +221,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="Approved on: 1:22 PM ET 03/30/2024"
+                  date = {dealState < 5 ? "Pending Approval": "Approved on: 1:22 PM ET 03/30/2024"}
                   iconStyle={
                     dealState < 5
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
@@ -279,7 +288,8 @@ const Deals = () => {
           </Modal.Header>
           <Modal.Body>
             <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal} 
-              setCurrentPrice={setCurrentPrice} generateLicense={generateLicense} setGenerateLicense={setGenerateLicense}/>
+              setCurrentPrice={setCurrentPrice} generateLicense={generateLicense} setGenerateLicense={setGenerateLicense} publishers={publishers}
+              setPublishers={setPublishers} writers={writers} setWriters={setWriters}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
