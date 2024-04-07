@@ -73,7 +73,7 @@ const NegoOthersContent = () => {
                     })} */}
                 </tbody>
             </Table>
-            <Button variant="primary" type="submit" onClick={sendEmail}>Add Stakeholder</Button>
+            <Button variant="primary" type="submit">Add Stakeholder</Button>
         </Card>
     </div>
     );
