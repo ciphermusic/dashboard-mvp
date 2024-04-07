@@ -107,3 +107,49 @@ export const postGenerateLicense = async (generate_license) => {
         return error;
     }
 }
+
+export const getPublishers = async () => {
+    const { data, error } = await supabase.from('Deal').select("Publishers");
+
+    if (error) {
+        console.log("Couldn't load generate license: " + error);
+    } else {
+        console.log("Generate license: " + data[0].generate_license);
+        return data[0].Publishers;
+    }
+}
+
+export const getWriters = async () => {
+    const { data, error } = await supabase.from('Deal').select("Writers");
+
+    if (error) {
+        console.log("Couldn't load generate license: " + error);
+    } else {
+        console.log("Generate license: " + data[0].generate_license);
+        return data[0].Writers;
+    }
+}
+
+export const postPublishers = async (updatedPublishers) => {
+    const { error } = await supabase.from('Deal').update({ Publishers: updatedPublishers }).eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't update Publishers");
+    } else {
+        console.log("Publishers updated");
+    }
+
+    return error;
+}
+
+export const postWriters = async (updatedWriters) => {
+    const { error } = await supabase.from('Deal').update({ Writers: updatedWriters }).eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't update writers");
+    } else {
+        console.log("Writers updated");
+    }
+
+    return error;
+}
