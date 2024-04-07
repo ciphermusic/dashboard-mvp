@@ -6,7 +6,6 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(req) {
   try {
-    console.log("Email Proxy Received");
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
