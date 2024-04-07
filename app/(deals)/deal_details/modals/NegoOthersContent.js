@@ -1,20 +1,44 @@
 import React, {useState} from 'react';
 import {Button, Card, Table, Form, Container} from 'react-bootstrap';
 
-import { postPublishers, postWriters } from '../../../api/api_client';
+import { postPublishers, postWriters, getCurrentPrice } from '../../../api/api_client';
 
 import Lottie from "lottie-react";
 import CheckMark from "../../../../public/images/animations/Checkmark.json";
 
 const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => {
-    console.log("Publishers: ", JSON.stringify(publishers))
-
     const [addStakeholder, setAddStakeholder] = useState(false);
     const [approvedAnimation, setApprovedAnimation] = useState(false);
 
     const handleClick = () => {
         setAddStakeholder(true);
     }
+
+    const sendEmail = async () => {
+        console.log("Sending email...");
+        const price = await getCurrentPrice();
+        let maxValue = null;
+        for (const [key, value] of Object.entries(price)) {
+            if (maxValue === null || value > maxValue) {
+            maxValue = value;
+            }
+        }
+        try {
+            const response = await fetch('/api/email_proxy?price=' + maxValue, {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json',
+              },
+            });
+        
+            if (!response.ok) {
+              throw new Error(`Failed to send email, status: ${response.status}`);
+            }
+          } catch (error) {
+            console.error('Error sending email:', error);
+            alert('Error sending email');
+          }
+    };
 
     const [formData, setFormData] = useState({
         type: '',
@@ -89,7 +113,13 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                                     <td className="align-middle">{item.affiliation}</td>
                                     <td className="align-middle">{item.IPI}</td>
                                     <td className="align-middle">{item.contact}</td>
-                                    <td className="align-middle">{item.status}</td>
+                                    {item.status === 'pending' ? (
+                                        <td className="align-middle">
+                                           <span className="badge bg-pill bg-warning">{item.status}</span>
+                                        </td>
+                                    ) : (
+                                        <td className="align-middle"><span className="badge bg-pill bg-success">{item.status}</span></td>
+                                    )}
                                 </tr>
                                 );
                             })}
@@ -122,7 +152,13 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                                     <td className="align-middle">{item.affiliation}</td>
                                     <td className="align-middle">{item.IPI}</td>
                                     <td className="align-middle">{item.contact}</td>
-                                    <td className="align-middle">{item.status}</td>
+                                    {item.status === 'pending' ? (
+                                        <td className="align-middle">
+                                            <a href="#" class="badge bg-warning">Pending</a>
+                                        </td>
+                                    ) : (
+                                        <td className="align-middle"><span className="badge bg-pill bg-success">{item.status}</span></td>
+                                    )}
                                 </tr>
                                 );
                             })}
@@ -174,7 +210,7 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                     <Form.Control type="text" placeholder="Enter contact" name="contact" value={formData.contact} onChange={handleChange} />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" onClick={sendEmail}>
                     Add & Notify Stakeholder
                 </Button>
             </Form>
