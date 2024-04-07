@@ -2,36 +2,36 @@ import React from 'react';
 import {Button, Card, Table} from 'react-bootstrap';
 
 const NegoOthersContent = () => {
-    const sendEmail = async () => {
-        try {
-            const response = await fetch('/api/email_proxy', {
-              method: 'POST',
-              headers: {
-                'Content-Type': 'application/json',
-              },
-              // Include any necessary data for the email
-              body: JSON.stringify({
-                firstName: 'Madhav', // This example doesn't use it but adjust as needed
-                price: 10000, // This example doesn't use it but adjust as needed
-              }),
-            });
+    // const sendEmail = async () => {
+    //     try {
+    //         const response = await fetch('/api/email_proxy', {
+    //           method: 'POST',
+    //           headers: {
+    //             'Content-Type': 'application/json',
+    //           },
+    //           // Include any necessary data for the email
+    //           body: JSON.stringify({
+    //             firstName: 'Madhav', // This example doesn't use it but adjust as needed
+    //             price: 10000, // This example doesn't use it but adjust as needed
+    //           }),
+    //         });
         
-            if (!response.ok) {
-              throw new Error(`Failed to send email, status: ${response.status}`);
-            }
+    //         if (!response.ok) {
+    //           throw new Error(`Failed to send email, status: ${response.status}`);
+    //         }
         
-            const result = await response.json();
+    //         const result = await response.json();
         
-            if (result.success) {
-              alert('Email sent successfully');
-            } else {
-              throw new Error('Failed to send email');
-            }
-          } catch (error) {
-            console.error('Error sending email:', error);
-            alert('Error sending email');
-          }
-    };
+    //         if (result.success) {
+    //           alert('Email sent successfully');
+    //         } else {
+    //           throw new Error('Failed to send email');
+    //         }
+    //       } catch (error) {
+    //         console.error('Error sending email:', error);
+    //         alert('Error sending email');
+    //       }
+    // };
     return (
     <div>
         <p>Details about the Negotiation - Other Stakeholders...</p>
