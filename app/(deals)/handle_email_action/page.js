@@ -2,7 +2,6 @@
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
 import { getWriters, postDealState, postWriters } from '../../api/api_client';
-import { Card, Table } from 'react-bootstrap';
 
 const ResponsePage = () => {
   const router = useRouter();

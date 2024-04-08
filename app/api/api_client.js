@@ -142,6 +142,7 @@ export const postPublishers = async (updatedPublishers) => {
 
 export const postWriters = async (updatedWriters) => {
     console.log('updating writers', updatedWriters);
+    updatedWriters = updatedWriters.filter(writer => writer !== null);
     const { error } = await supabase.from('Deal').update({ Writers: updatedWriters }).eq('id', 1);
 
     if (error) {
