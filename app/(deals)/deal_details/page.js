@@ -221,16 +221,16 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date = {dealState < 5 ? "Pending Approval": "Approved on: 1:22 PM ET 03/30/2024"}
+                  date = {dealState < 7 ? "Pending Approval": "Approved on: 1:22 PM ET 03/30/2024"}
                   iconStyle={
-                    dealState < 5
+                    dealState < 7
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
                   icon={
                     <HandThumbsUpFill/>
                   }
-                  style={dealState < 5 ? {} : { opacity: 0.6 }}
+                  style={dealState < 7 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
@@ -244,13 +244,14 @@ const Deals = () => {
                   className="vertical-timeline-element--work"
                   date="Pending Approval"
                   iconStyle={
-                    dealState < 5
+                    dealState < 9
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
                   icon={
                     <VectorPen />
                   }
+                  style={dealState < 9 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.SIGN_OFF)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Sign Off</h3>
@@ -264,13 +265,14 @@ const Deals = () => {
                   className="vertical-timeline-element--work"
                   date="Pending Approval"
                   iconStyle={
-                    dealState < 5
+                    dealState < 12
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
                       : { background: 'rgba(36,178,109,255)', border: '3px solid lightgreen', padding: '2px'}
                   }
                   icon={
                     <CreditCardFill />
                   }
+                  style={dealState < 12 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.PAYMENT)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
                   <h3 className="vertical-timeline-element-title">Payment</h3>

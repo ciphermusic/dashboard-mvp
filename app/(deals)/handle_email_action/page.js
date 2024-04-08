@@ -1,7 +1,7 @@
 'use client';
 import { useRouter } from 'next/navigation';
 import React, { useEffect, useState } from 'react';
-import { getWriters, postWriters } from '../../api/api_client';
+import { getWriters, postDealState, postWriters } from '../../api/api_client';
 import { Card, Table } from 'react-bootstrap';
 
 const ResponsePage = () => {
@@ -27,6 +27,7 @@ const ResponsePage = () => {
         if (shouldPostWriters) {
           await postWriters(updatedWriters);
           setWriters(updatedWriters);
+          postDealState(8);
         }
       } catch (error) {
         console.error('Error:', error);
