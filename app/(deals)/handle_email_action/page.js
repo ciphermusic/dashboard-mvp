@@ -23,6 +23,9 @@ const ResponsePage = () => {
           }
           return writer;
         });
+
+        // remove all null writers
+        updatedWriters = updatedWriters.filter(writer => writer !== null);
     
         if (shouldPostWriters) {
           await postWriters(updatedWriters);
