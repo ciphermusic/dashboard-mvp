@@ -62,6 +62,12 @@ export const DashboardMenu = [
 	},
 	{
 		id: uuid(),
+		title: 'Analytics',
+		icon: 'bar-chart',
+		link: '/'
+	},
+	{
+		id: uuid(),
 		title: 'Settings',
 		icon: 'settings',
 		link: '/layout-vertical'
