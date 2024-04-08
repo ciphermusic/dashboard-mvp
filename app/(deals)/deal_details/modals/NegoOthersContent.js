@@ -46,7 +46,9 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
         affiliation: '',
         IPI: '',
         contact: '',
-        status: 'pending'
+        status: 'pending',
+        license_status: 'pending',
+        invoice_status: 'pending'
       });
     
       const handleChange = (e) => {

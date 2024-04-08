@@ -7,7 +7,7 @@ import { Button, Card, Table } from "react-bootstrap";
 
 import { postGenerateLicense } from '../../../api/api_client';
 
-const SignOffContent = ({ generateLicense, setGenerateLicense, publishers }) => {
+const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, writers }) => {
   const [loading, setLoading] = useState(false);
   const [viewContract, setViewContract] = useState(false);
 
@@ -33,24 +33,65 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers }) => 
   if (generateLicense) {
     return (viewContract ? (
       <div>
-        <p>Details about the Sign Off...</p>
-        <iframe
-          src="/images/pdfs/License.pdf"
-          width="100%"
-          height="600px"
-          style={{ border: 'none' }}
-        ></iframe>
-         <Button onClick={closeContractClick}> Close Contract </Button>
+        <div>
+          <p>Details about the Sign Off...</p>
+          <iframe
+            src="/images/pdfs/License.pdf"
+            width="100%"
+            height="600px"
+            style={{ border: 'none' }}
+          ></iframe>
+        </div>
+        <div>
+          <Button className="d-block w-100" onClick={closeContractClick}> Close Contract </Button>
+        </div>
       </div>
     ) : (
       <div>
         <p>Details about the Sign Off...</p>
-        {/* <iframe
-          src="/images/pdfs/License.pdf"
-          width="100%"
-          height="600px"
-          style={{ border: 'none' }}
-        ></iframe> */}
+        <Card className="h-100 mb-3">
+          <Card.Header className="bg-white py-4">
+              <h4 className="mb-0">Publishers</h4>
+              </Card.Header>
+              <Table responsive className="text-nowrap">
+                  <thead className="table-light">
+                      <tr>
+                          <th>Name</th>
+                          <th>Affiliation</th>
+                          <th>IPI</th>
+                          <th>License</th>
+                          <th>Status</th>
+                          <th></th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      {Object.values(writers).map((item, index) => {
+                          return (
+                          <tr key={index}>
+                              <td className="align-middle">{item.name}</td>
+                              <td className="align-middle">{item.affiliation}</td>
+                              <td className="align-middle">{item.IPI}</td>
+                              <td className="align-middle">
+                                <button 
+                                type="button" 
+                                className="btn btn-link p-0" // Using Bootstrap classes for styling
+                                onClick={() => showContractClick()}>
+                                {"View License"}
+                                </button>
+                              </td>
+                              {item.license_status === 'pending' ? (
+                                  <td className="align-middle">
+                                      <a href="#" class="badge bg-warning">Pending</a>
+                                  </td>
+                              ) : (
+                                  <td className="align-middle"><span className="badge bg-pill bg-success">{item.status}</span></td>
+                              )}
+                          </tr>
+                          );
+                      })}
+                  </tbody>
+              </Table>
+          </Card>
         <Card className="h-100 mb-3">
           <Card.Header className="bg-white py-4">
               <h4 className="mb-0">Publishers</h4>
@@ -78,10 +119,10 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers }) => 
                                 type="button" 
                                 className="btn btn-link p-0" // Using Bootstrap classes for styling
                                 onClick={() => showContractClick()}>
-                                {"View Contract"}
+                                {"View License"}
                                 </button>
                               </td>
-                              {item.status === 'pending' ? (
+                              {item.license_status === 'pending' ? (
                                   <td className="align-middle">
                                       <a href="#" class="badge bg-warning">Pending</a>
                                   </td>
@@ -93,6 +134,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers }) => 
                       })}
                   </tbody>
               </Table>
+              <Button variant="primary" type="submit">Distribute Licenses</Button>
           </Card>
       </div>
     ));
