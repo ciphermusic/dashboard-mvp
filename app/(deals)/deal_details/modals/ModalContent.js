@@ -15,7 +15,7 @@ const ModalContent = ({ type, dealState, setDealState, setShowModal, setCurrentP
     case DealTimelineElementType.NEGOTIATION_OTHER:
       return <NegoOthersContent writers={writers} setWriters={setWriters} publishers={publishers} setPublishers={setPublishers}/>;
     case DealTimelineElementType.SIGN_OFF:
-      return <SignOffContent generateLicense={generateLicense} setGenerateLicense={setGenerateLicense}/>;
+      return <SignOffContent generateLicense={generateLicense} setGenerateLicense={setGenerateLicense} publishers={publishers}/>;
     case DealTimelineElementType.PAYMENT:
       return <PaymentContent />;
     default:
