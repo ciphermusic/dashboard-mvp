@@ -16,7 +16,7 @@ const ResponsePage = () => {
         const fetchedWritersArray = Object.values(fetchedWritersObject);
     
         let shouldPostWriters = false;
-        const updatedWriters = fetchedWritersArray.map((writer) => {
+        let updatedWriters = fetchedWritersArray.map((writer) => {
           if (writer.status === 'pending') {
             shouldPostWriters = true;
             return { ...writer, status: 'completed' };
