@@ -8,7 +8,7 @@ import { PageHeading } from 'widgets'
 const IuoaTemplates = () => {
   return (
     <Container fluid className="p-6">
-      <PageHeading heading="Intended Use of Assets" subheading="Configure what requesters must provide as part of their licensing request." />
+      <PageHeading heading="Deal Flow Steps" subheading="Configure what steps are required for a deal to be completed." />
       <p>Configure what requesters must provide as part of their licensing request.</p>
 
       <Row className="mt-6">

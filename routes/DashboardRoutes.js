@@ -35,7 +35,7 @@ export const DashboardMenu = [
 		title: 'Templates',
 		icon: 'layers',
 		children: [
-			{ id: uuid(), link: '/templates/iuoa-templates', name: 'Intended Use of Assets' },
+			{ id: uuid(), link: '/templates/iuoa-templates', name: 'Deal Flow Steps' },
 			{ id: uuid(), link: '/templates/license-templates', name: 'Licenses'},
 		]
 	},

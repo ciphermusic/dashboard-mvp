@@ -5,7 +5,7 @@ const ACTION_URL = process.env.API_ENDPOINT + 'handle_email_action';
 export const EmailTemplate = ({ firstName, price }) => (
   <div style={{ fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
     <h1 style={{ color: '#333' }}>Hello, {firstName}!</h1>
-    <p>Incoming Sync Request, your take will be: <strong>${price}</strong>.</p>
+    <p>Incoming Sync Request, your take will be: <strong>$750</strong>.</p>
     <p>Would you like to accept the request?</p>
     <div style={{ marginTop: '20px' }}>
       <a
