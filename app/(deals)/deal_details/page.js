@@ -246,7 +246,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="Pending Approval"
+                  date= {dealState < 9 ? "Pending Approval": "Approved on: 3:52 PM ET 03/30/2024"}
                   iconStyle={
                     dealState < 9
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
@@ -267,7 +267,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date="Pending Approval"
+                  date={dealState < 12 ? "Pending Approval": "Approved on: 8:55 PM ET 03/30/2024"}
                   iconStyle={
                     dealState < 12
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
