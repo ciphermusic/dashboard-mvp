@@ -13,6 +13,7 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
   const [loading, setLoading] = useState(false);
   const [viewContract, setViewContract] = useState(false);
 
+
   const sendEmail = async () => {
     console.log("Sending email...");
     try {
@@ -30,7 +31,6 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
         console.error('Error sending email:', error);
       }
 };
-
   const handleClick = () => {
     setLoading(true); // Start the loading process
 
