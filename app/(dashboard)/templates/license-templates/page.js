@@ -10,7 +10,7 @@ const LicenseTemplates = () => {
     <Container fluid className="p-6">
       {/* Page Heading */}
       <PageHeading heading="License Templates" />
-      <p>Upload and manage license template documents to be used by Cipher's License Generator.</p>
+      <p>Upload and manage license template documents to be used by License Generator.</p>
 
       <Row className="mt-6">
         <Col xl={{ span: 8, offset: 2 }} lg={{ span: 10, offset: 1 }} md={12} xs={12}>
