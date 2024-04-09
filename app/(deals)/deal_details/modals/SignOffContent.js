@@ -22,6 +22,11 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
     }, 2000);
   };
 
+  const sendEmail = async () => {
+    console.log("Sending email...");
+    
+  };
+
   const showContractClick = () => {
     setViewContract(true);
   };
@@ -134,7 +139,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
                       })}
                   </tbody>
               </Table>
-              <Button variant="primary" type="submit">Distribute Licenses</Button>
+              <Button variant="primary" type="submit" onClick={sendEmail}>Distribute Licenses</Button>
           </Card>
       </div>
     ));
