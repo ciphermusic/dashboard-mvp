@@ -3,6 +3,8 @@ import {Button, Card, Table, Form, Container} from 'react-bootstrap';
 
 import { postPublishers, postWriters, getCurrentPrice } from '../../../api/api_client';
 
+import {Check, ExclamationTriangle} from 'react-bootstrap-icons';
+
 import Lottie from "lottie-react";
 import CheckMark from "../../../../public/images/animations/Checkmark.json";
 
@@ -111,7 +113,7 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                             {Object.values(writers).map((item, index) => {
                                 return (
                                 <tr key={index}>
-                                    <td className="align-middle">{item.name}</td>
+                                    <td className="align-middle">{item.name}   {index > 5 ? <ExclamationTriangle color="orange"></ExclamationTriangle> : <Check color="blue"></Check>}</td>
                                     <td className="align-middle">{item.affiliation}</td>
                                     <td className="align-middle">{item.IPI}</td>
                                     <td className="align-middle">{item.contact}</td>
@@ -126,8 +128,6 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                                 );
                             })}
                         </tbody>
-
-                        
                     </Table>
                 </Card>
 
@@ -150,7 +150,7 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                             {Object.values(publishers).map((item, index) => {
                                 return (
                                 <tr key={index}>
-                                    <td className="align-middle">{item.name}</td>
+                                    <td className="align-middle">{item.name}   <Check color="blue"></Check></td>
                                     <td className="align-middle">{item.affiliation}</td>
                                     <td className="align-middle">{item.IPI}</td>
                                     <td className="align-middle">{item.contact}</td>

@@ -13,7 +13,7 @@ import { VectorPen, CreditCardFill, GearWideConnected, SendCheck, HandThumbsUpFi
 
 import 'react-vertical-timeline-component/style.min.css';
 
-import { getDealState, getCurrentPrice, getGenerateLicense, getPublishers, getWriters } from '../../api/api_client';
+import { getDealState, getCurrentPrice, getGenerateLicense, getPublishers, getWriters, getGenerateInvoice } from '../../api/api_client';
 
 const Deals = () => {
   const [showModal, setShowModal] = useState(false);
@@ -23,6 +23,7 @@ const Deals = () => {
   const [currentPrice, setCurrentPrice] = useState(0);
 
   const [generateLicense, setGenerateLicense] = useState(false);
+  const [generateInvoice, setGenerateInvoice] = useState(false);
   
   const [publishers, setPublishers] = useState(null);
   const [writers, setWriters] = useState(null);
@@ -51,6 +52,9 @@ const Deals = () => {
 
       const generateLicense = await getGenerateLicense();
       setGenerateLicense(generateLicense);
+
+      const generateInvoice = await getGenerateInvoice();
+      setGenerateInvoice(generateInvoice)
 
       const state = await getDealState();
       setDealState(state);
@@ -130,11 +134,11 @@ const Deals = () => {
                       <Card.Body>
                           <div className="d-flex justify-content-between align-items-center mb-3">
                               <div>
-                                  <h4 className="mb-0">Current Aside Price</h4>
+                                  <h4 className="mb-0">Current aside Price</h4>
                               </div>
                           </div>
                           <div>
-                              <h1 className="fw-bold">{currentPrice == 0 ? "Price Not Set" : "$" + currentPrice}</h1>
+                              <h1 className="fw-bold">{currentPrice == 0 ? "Price Not Set" : "$" + parseInt(currentPrice,10).toLocaleString()}</h1>
                           </div>
                       </Card.Body>
                   </Card>
@@ -212,9 +216,9 @@ const Deals = () => {
                   style={dealState < 4 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
-                  <h3 className="vertical-timeline-element-title">Negotiation - Master Owner</h3>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Recording Rights</h3>
                   <p>
-                    Click to view the terms proposed by the Master Licensor.
+                    Click to view terms.
                   </p>
                 </button>
                 </VerticalTimelineElement>
@@ -233,9 +237,9 @@ const Deals = () => {
                   style={dealState < 7 ? {} : { opacity: 0.6 }}
                 >
                 <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
-                  <h3 className="vertical-timeline-element-title">Negotiation - Other Owners</h3>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Publishing Rights</h3>
                   <p>
-                  Click to view the terms proposed by Publishers, Composers and Other Rights Owners.
+                  Click to view terms.
                   </p>
                 </button>
                 </VerticalTimelineElement>
@@ -291,7 +295,8 @@ const Deals = () => {
           <Modal.Body>
             <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal} 
               setCurrentPrice={setCurrentPrice} generateLicense={generateLicense} setGenerateLicense={setGenerateLicense} publishers={publishers}
-              setPublishers={setPublishers} writers={writers} setWriters={setWriters}/>
+              setPublishers={setPublishers} writers={writers} setWriters={setWriters} generateInvoice={generateInvoice}
+              setGenerateInvoice={setGenerateInvoice}/>
           </Modal.Body>
           <Modal.Footer>
             <Button variant="secondary" onClick={handleCloseModal}>Close</Button>
