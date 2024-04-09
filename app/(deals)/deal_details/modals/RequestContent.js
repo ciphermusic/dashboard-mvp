@@ -95,7 +95,7 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p><strong>Song Title:</strong>Everybody</p>
+                  <p><strong>Song Title:</strong> Everybody</p>
                   <p><strong>Artist/Recording:</strong> Don Broco</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">

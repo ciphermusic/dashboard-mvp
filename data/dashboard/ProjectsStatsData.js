@@ -25,7 +25,7 @@ export const ProjectsStats = [
          title : "Archived",
          value : 6,
          icon: <Archive size={18}/>,
-         statInfo: '<span className="text-dark me-2">  </span> aaa' 
+         statInfo: '<span className="text-dark me-2">  </span> No Updates' 
       },
 ];
 export default ProjectsStats;

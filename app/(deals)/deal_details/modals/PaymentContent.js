@@ -7,7 +7,7 @@ import { Button, Card, Table } from "react-bootstrap";
 
 import { postGenerateInvoice } from '../../../api/api_client';
 
-import {Check, ExclamationTriangle} from 'react-bootstrap-icons';
+import {Check, ExclamationTriangle, Person} from 'react-bootstrap-icons';
 
 const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, writers }) => {
   const [loading, setLoading] = useState(false);
@@ -51,6 +51,40 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
     ) : (
       <div>
         <p>Details about the Payment...</p>
+        <Card className="h-100 mb-3">
+          <Card.Header className="bg-white py-4">
+                <h4 className="mb-0">Recording</h4>
+            </Card.Header>
+            <Table responsive className="text-nowrap">
+                <thead className="table-light">
+                    <tr>
+                        <th>Name</th>
+                        <th>Affiliation</th>
+                        <th>IPI</th>
+                        <th>Invoice</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr style={{border: "3px solid blue"}}>
+                        <td className="align-middle">Believe Music   <Person color="blue"></Person></td>
+                        <td className="align-middle">PRS</td>
+                        <td className="align-middle">Placeholder</td>
+                        <td className="align-middle">
+                          <button 
+                          type="button" 
+                          className="btn btn-link p-0" // Using Bootstrap classes for styling
+                          onClick={() => showContractClick()}>
+                          {"View Invoice"}
+                          </button>
+                        </td>
+                        <td className="align-middle"><span className="badge bg-pill bg-success">completed</span></td>
+                        {/* )} */}
+                    </tr>
+                </tbody>
+            </Table>
+        </Card>
         <Card className="h-100 mb-3">
           <Card.Header className="bg-white py-4">
               <h4 className="mb-0">Writers / Composers</h4>
