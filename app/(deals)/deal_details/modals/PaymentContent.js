@@ -63,20 +63,22 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
 
   if (generateInvoice) {
     if (viewContract) {
-      <div>
+      return (
         <div>
-          <p>Details about the Payment...</p>
-          <iframe
-            src="/images/pdfs/invoice_pdf.pdf"
-            width="100%"
-            height="600px"
-            style={{ border: 'none' }}
-          ></iframe>
+          <div>
+            <p>Details about the Payment...</p>
+            <iframe
+              src="/images/pdfs/invoice_pdf.pdf"
+              width="100%"
+              height="600px"
+              style={{ border: 'none' }}
+            ></iframe>
+          </div>
+          <div>
+            <Button className="d-block w-100" onClick={closeContractClick}> Close Invoice </Button>
+          </div>
         </div>
-        <div>
-          <Button className="d-block w-100" onClick={closeContractClick}> Close Invoice </Button>
-        </div>
-      </div>
+      )
     } else {
       return (showAnimation ? (
         <Container className="mt-5">
