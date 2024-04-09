@@ -164,9 +164,9 @@ const Deals = () => {
                     <Card.Body>
                         <Row>
                           <div className="align-middle text-dark">
-                              <div className="float-start me-3">{Math.round(dealState / 13 * 100)}%</div>
+                              <div className="float-start me-3">{Math.round(dealState / 12 * 100)}%</div>
                               <div className="mt-2">
-                                  <ProgressBar now={dealState / 13 * 100} style={{ height: '5px' }} />
+                                  <ProgressBar now={dealState / 12 * 100} style={{ height: '5px' }} />
                               </div>
                           </div>
                         </Row>
