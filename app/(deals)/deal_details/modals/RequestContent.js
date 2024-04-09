@@ -102,10 +102,9 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Song Details
                   <div>
-                    {feedback.block1.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
-                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                    {feedback.block1.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}/>}
+                    {approvedFirst && <CheckAll color="green" size={20}/>}
                   </div>
-                  {approvedFirst && <CheckAll color="green" size={20}/>}
                 </div>
               </Accordion.Header>
               <Accordion.Body>
@@ -137,10 +136,9 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Usage Description
                   <div>
-                    {feedback.block2.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
-                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                    {feedback.block2.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}/>}
+                    {approvedSecond && <CheckAll color="green" size={20}/>}
                   </div>
-                  {approvedSecond && <CheckAll color="green" size={20}/>}
                 </div>
               </Accordion.Header>
               <Accordion.Body>
@@ -171,10 +169,9 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Rights & Permissions
                   <div>
-                    {feedback.block3.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
-                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                    {feedback.block3.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}/>}
+                    {approvedThird && <CheckAll color="green" size={20}/>}
                   </div>
-                  {approvedThird && <CheckAll color="green" size={20}/>}
                 </div>
               </Accordion.Header>
               <Accordion.Body>
@@ -206,7 +203,7 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Production Details
                   <div>
-                    {feedback.block4.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
+                    {feedback.block4.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}/>}
                     {approvedFourth && <CheckAll color="green" size={20}/>}
                   </div>
                 </div>
