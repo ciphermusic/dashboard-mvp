@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
-import { EmailTemplate } from '../../../components/email_templates/EmailTemplate';
+import SignoffEmailTemplate from 'components/email_templates/SignoffEmailTemplate';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -9,19 +9,19 @@ export async function POST(req) {
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
-      subject: 'Cipher: Everybody by Don Bronco requested by Ford Motor Company',
-      react: EmailTemplate({ firstName: 'Jamie Lancaster', price }),
+      subject: 'Action Required: Sync Contract | Everybody - Don Bronco | Ford Motor Company',
+      react: SignoffEmailTemplate({ firstName: 'Jamie Lancaster' }),
       attachments: [
         {
-          filename: 'license.pdf',
-          content: license,
-          type: 'application/pdf',
+          filename: 'Sync_License_Everybody_Don_Bronco_09042024.pdf',
+          path: 'https://joqfsynntlxnuyvthuua.supabase.co/storage/v1/object/public/cipher-docs/License.pdf?t=2024-04-09T02%3A29%3A38.803Z',
         },
       ]
     });
 
-    return NextResponse.json({ message: "Email sent successfully, id=" + JSON.stringify(response) }, { status: 200 });
+    return NextResponse.json({ message: "Sign off email sent successfully, id=" + JSON.stringify(response) }, { status: 200 });
   } catch (error) {
-    return NextResponse.json({ error });
+    console.log("Error sending email:", error);
+    return NextResponse.json({ error }, { status: 500 });
   }
 }

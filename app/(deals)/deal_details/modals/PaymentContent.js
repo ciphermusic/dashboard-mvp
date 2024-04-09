@@ -13,6 +13,24 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
   const [loading, setLoading] = useState(false);
   const [viewContract, setViewContract] = useState(false);
 
+  const sendEmail = async () => {
+    console.log("Sending email...");
+    try {
+        const response = await fetch('/api/payment_email_proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
+    
+        if (!response.ok) {
+          throw new Error(`Failed to send email, status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Error sending email:', error);
+      }
+};
+
   const handleClick = () => {
     setLoading(true); // Start the loading process
 
@@ -81,7 +99,7 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
                                 {"View Invoice"}
                                 </button>
                               </td>
-                              {item.license_status === 'pending' ? (
+                              {item.invoice_status === 'pending' ? (
                                   <td className="align-middle">
                                       <a href="#" class="badge bg-warning">Pending</a>
                                   </td>
@@ -124,7 +142,7 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
                                 {"View Invoice"}
                                 </button>
                               </td>
-                              {item.license_status === 'pending' ? (
+                              {item.invoice_status === 'pending' ? (
                                   <td className="align-middle">
                                       <a href="#" class="badge bg-warning">Pending</a>
                                   </td>
@@ -136,7 +154,7 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
                       })}
                   </tbody>
               </Table>
-              <Button variant="primary" type="submit">Distribute Invoices</Button>
+              <Button variant="primary" type="submit" onClick={sendEmail}>Distribute Invoices</Button>
           </Card>
       </div>
     ));
@@ -173,7 +191,7 @@ const PaymentContent = ({ generateInvoice, setGenerateInvoice, publishers, write
               alignItems: 'center', 
             }}>
               <Lottie animationData={LoadingAnimation} style={{ width: '30%', height: '30%' }} loop={true} />
-              <p style={{ fontWeight: 'bold' }}> Please wait while we generate your licenses...</p>
+              <p style={{ fontWeight: 'bold' }}> Please wait while we generate your invoices...</p>
             </div>
           </div>
         )}

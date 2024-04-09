@@ -26,8 +26,21 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
 
   const sendEmail = async () => {
     console.log("Sending email...");
+    try {
+        const response = await fetch('/api/signoff_email_proxy', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+        });
     
-  };
+        if (!response.ok) {
+          throw new Error(`Failed to send email, status: ${response.status}`);
+        }
+      } catch (error) {
+        console.error('Error sending email:', error);
+      }
+};
 
   const showContractClick = () => {
     setViewContract(true);
