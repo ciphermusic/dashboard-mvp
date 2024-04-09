@@ -78,16 +78,9 @@ const NavbarTop = (props) => {
 						</Link>
 					</div>
 				) : (
-					<div style={{ padding: '0 10px' }}>
-						<Button style={{ marginRight: '10px' }} variant="outline-success" disabled>
-							Welcome {session && session.user ? session.user.email : ''}!
-						</Button>
-						<Button onClick={signOut}>
-							Sign Out
-						</Button>
-					</div>
+					<QuickMenu signOut={signOut}/>
 				)}
-					<QuickMenu />
+					
 				</Nav>
 			</div>
 		</Navbar>
