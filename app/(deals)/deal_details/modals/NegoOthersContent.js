@@ -38,7 +38,6 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
             }
           } catch (error) {
             console.error('Error sending email:', error);
-            alert('Error sending email');
           }
     };
 
