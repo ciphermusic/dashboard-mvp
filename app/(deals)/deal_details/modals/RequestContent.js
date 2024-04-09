@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Accordion, Card, Button, Container, Row, Col, Form } from 'react-bootstrap';
-import { CheckAll } from  'react-bootstrap-icons';
+import { CheckAll, Chat } from  'react-bootstrap-icons';
 import Lottie from "lottie-react";
 import CheckMark from "../../../../public/images/animations/Checkmark.json";
 import { postDealState } from '../../../api/api_client';
@@ -17,6 +17,17 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
   const [moreInformationRequested, setMoreInformationRequested] = useState(false);
 
   const [approvedAll, setApprovedAll] = useState(false);
+
+  const [feedback, setFeedback] = useState({
+    block1: { text: ''},
+    block2: { text: ''},
+    block3: { text: ''},
+    block4: { text: ''},
+  });
+
+  const handleFeedbackChange = (blockId, text) => {
+    setFeedback(prev => ({ ...prev, [blockId]: { text } }));
+  };
 
   // Function definitions should also be outside the return statement
   const handleClick = (eventKey) => {
@@ -90,6 +101,10 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               <Accordion.Header>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Song Details
+                  <div>
+                    {feedback.block1.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
+                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                  </div>
                   {approvedFirst && <CheckAll color="green" size={20}/>}
                 </div>
               </Accordion.Header>
@@ -99,9 +114,14 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                   <p><strong>Artist/Recording:</strong> Don Broco</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
-                    <Form.Label>Feedback for Song Details</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
-                  </Form.Group>
+                  <Form.Label>Feedback for Song Details</Form.Label>
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={feedback.block1.text}
+                    onChange={(e) => handleFeedbackChange('block1', e.target.value)}
+                  />
+                </Form.Group>
                 {approvedFirst ? (
                   <Button className="mt-2" onClick={() => handleClickDeselect("1")}>Cancel</Button>
                 ) : (
@@ -116,6 +136,10 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               <Accordion.Header>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Usage Description
+                  <div>
+                    {feedback.block2.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
+                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                  </div>
                   {approvedSecond && <CheckAll color="green" size={20}/>}
                 </div>
               </Accordion.Header>
@@ -126,7 +150,12 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                     <Form.Label>Feedback for Usage Description</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      value={feedback.block2.text}
+                      onChange={(e) => handleFeedbackChange('block2', e.target.value)}
+                    />
                   </Form.Group>
                 {approvedSecond ? (
                   <Button className="mt-2" onClick={() => handleClickDeselect("2")}>Cancel</Button>
@@ -141,6 +170,10 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               <Accordion.Header>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Rights & Permissions
+                  <div>
+                    {feedback.block3.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
+                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                  </div>
                   {approvedThird && <CheckAll color="green" size={20}/>}
                 </div>
               </Accordion.Header>
@@ -152,7 +185,12 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                     <Form.Label>Feedback for Rights & Permissions</Form.Label>
-                    <Form.Control as="textarea" rows={3} />
+                    <Form.Control
+                      as="textarea"
+                      rows={3}
+                      value={feedback.block3.text}
+                      onChange={(e) => handleFeedbackChange('block3', e.target.value)}
+                    />
                   </Form.Group>
                 {approvedThird ? (
                   <Button className="mt-2" onClick={() => handleClickDeselect("3")}>Cancel</Button>
@@ -167,7 +205,10 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               <Accordion.Header> 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
                   Production Details
-                  {approvedFourth && <CheckAll color="green" size={20}/>}
+                  <div>
+                    {feedback.block4.text && <Chat color="blue" size={20} style={{marginRight: "20px"}}></Chat>}
+                    {approvedFourth && <CheckAll color="green" size={20}/>}
+                  </div>
                 </div>
               </Accordion.Header>
               <Accordion.Body>
@@ -188,7 +229,12 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                   <Form.Label>Feedback for Production Details</Form.Label>
-                  <Form.Control as="textarea" rows={3} />
+                  <Form.Control
+                    as="textarea"
+                    rows={3}
+                    value={feedback.block4.text}
+                    onChange={(e) => handleFeedbackChange('block4', e.target.value)}
+                  />
                 </Form.Group>
                 {approvedFourth ? (
                   <Button className="mt-2" onClick={() => handleClickDeselect("4")}>Cancel</Button>
