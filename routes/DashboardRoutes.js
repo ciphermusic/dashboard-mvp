@@ -35,25 +35,24 @@ export const DashboardMenu = [
 		title: 'Templates',
 		icon: 'layers',
 		children: [
-			{ id: uuid(), link: '/pages/iuoa-templates', name: 'Intended Use of Assets' },
-			{ id: uuid(), link: '/pages/license-templates', name: 'Licenses'},
+			{ id: uuid(), link: '/templates/iuoa-templates', name: 'Intended Use of Assets' },
+			{ id: uuid(), link: '/templates/license-templates', name: 'Licenses'},
 		]
 	},
 	{
 		id: uuid(),
 		title: 'Team',
 		icon: 'users',
-		link: '/pages/team',
 		children: [
-			{ id: uuid(), link: '/pages/team', name: 'Members'},
-			{ id: uuid(), link: '/pages/roles', name: 'Roles'},
+			{ id: uuid(), link: '/team/members', name: 'Members'},
+			{ id: uuid(), link: '/team/roles', name: 'Roles'},
 		]
 	},
 	{
 		id: uuid(),
 		title: 'Billing',
 		icon: 'credit-card',
-		link: '/pages/billing',
+		link: '/billing',
 		children: [
 			{ id: uuid(), link: '/pages/billing', name: 'Bank Accounts'},
 			{ id: uuid(), link: '/pages/invoices', name: 'Invoices'},
@@ -63,14 +62,14 @@ export const DashboardMenu = [
 	{
 		id: uuid(),
 		title: 'Analytics',
-		icon: 'bar-chart',
-		link: '/'
+		icon: 'pie-chart',
+		link: '/analytics'
 	},
 	{
 		id: uuid(),
 		title: 'Settings',
 		icon: 'settings',
-		link: '/layout-vertical'
+		link: '/settings'
 	},
 ];
 
