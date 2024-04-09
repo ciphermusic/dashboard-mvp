@@ -7,6 +7,8 @@ import { Button, Card, Table } from "react-bootstrap";
 
 import { postGenerateLicense } from '../../../api/api_client';
 
+import {Check, ExclamationTriangle} from 'react-bootstrap-icons';
+
 const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, writers }) => {
   const [loading, setLoading] = useState(false);
   const [viewContract, setViewContract] = useState(false);
@@ -15,7 +17,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
     setLoading(true); // Start the loading process
 
     setTimeout(() => {
-      // After 5 seconds, do the following:
+      // After 2 seconds, do the following:
       postGenerateLicense(true); // Call postGenerateLicense
       setGenerateLicense(true);  // Update the generateLicense state
       setLoading(false); // Optionally, stop the loading process
@@ -43,7 +45,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
           ></iframe>
         </div>
         <div>
-          <Button className="d-block w-100" onClick={closeContractClick}> Close Contract </Button>
+          <Button className="d-block w-100" onClick={closeContractClick}> Close License </Button>
         </div>
       </div>
     ) : (
@@ -51,7 +53,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
         <p>Details about the Sign Off...</p>
         <Card className="h-100 mb-3">
           <Card.Header className="bg-white py-4">
-              <h4 className="mb-0">Publishers</h4>
+              <h4 className="mb-0">Writers / Composers</h4>
               </Card.Header>
               <Table responsive className="text-nowrap">
                   <thead className="table-light">
@@ -68,7 +70,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
                       {Object.values(writers).map((item, index) => {
                           return (
                           <tr key={index}>
-                              <td className="align-middle">{item.name}</td>
+                              <td className="align-middle">{item.name}    {index > 5 ? <ExclamationTriangle color="orange"></ExclamationTriangle> : <Check color="blue"></Check>}</td>
                               <td className="align-middle">{item.affiliation}</td>
                               <td className="align-middle">{item.IPI}</td>
                               <td className="align-middle">
@@ -111,13 +113,13 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
                       {Object.values(publishers).map((item, index) => {
                           return (
                           <tr key={index}>
-                              <td className="align-middle">{item.name}</td>
+                              <td className="align-middle">{item.name}   <Check color="blue"></Check></td>
                               <td className="align-middle">{item.affiliation}</td>
                               <td className="align-middle">{item.IPI}</td>
                               <td className="align-middle">
                                 <button 
                                 type="button" 
-                                className="btn btn-link p-0" // Using Bootstrap classes for styling
+                                className="btn btn-link p-0"
                                 onClick={() => showContractClick()}>
                                 {"View License"}
                                 </button>
@@ -140,20 +142,39 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
     ));
   } else {
     return (
-      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+      <div>
         {!loading ? (
-          <Button onClick={handleClick} style={{ marginTop: '20px', marginBottom: '20px' }}>
-            Click to Generate Licenses
-          </Button>
+          <div>
+            <div>
+              <p>Details about the Sign Off...</p>
+              <h5>Please select a template</h5>
+                <select className="form-select" style={{ width: '100%', marginBottom: '20px', padding: '10px', borderRadius: '5px', border: '1px solid #ccc' }}>
+                  <option value="template1">License Template TV</option>
+                  <option value="template2">License Template Film</option>
+                  <option value="template3">License Template Microsync</option>
+                </select>
+              <iframe
+                src="/images/pdfs/License.pdf"
+                width="100%"
+                height="600px"
+                style={{ border: 'none' }}
+              ></iframe>
+            </div>
+            <div>
+              <Button className="d-block w-100" onClick={handleClick}> Generate Licenses </Button>
+            </div>
+          </div>
         ) : (
-          <div style={{ 
-            display: 'flex', 
-            flexDirection: 'column',
-            justifyContent: 'center', 
-            alignItems: 'center', 
-          }}>
-            <Lottie animationData={LoadingAnimation} style={{ width: '30%', height: '30%' }} loop={true} />
-            <p style={{ fontWeight: 'bold' }}> Please wait while we generate your licenses...</p>
+          <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center' }}>
+            <div style={{ 
+              display: 'flex', 
+              flexDirection: 'column',
+              justifyContent: 'center', 
+              alignItems: 'center', 
+            }}>
+              <Lottie animationData={LoadingAnimation} style={{ width: '30%', height: '30%' }} loop={true} />
+              <p style={{ fontWeight: 'bold' }}> Please wait while we generate your licenses...</p>
+            </div>
           </div>
         )}
       </div>

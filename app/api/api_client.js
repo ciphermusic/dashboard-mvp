@@ -153,3 +153,25 @@ export const postWriters = async (updatedWriters) => {
 
     return error;
 }
+
+export const getGenerateInvoice = async () => {
+    const { data, error } = await supabase.from('Deal').select('generate_invoice').eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't load generate license: " + error);
+    } else {
+        console.log("Generate license: " + data[0].generate_invoice);
+        return data[0].generate_invoice;
+    }
+}
+
+export const postGenerateInvoice = async (generate_invoice) => {
+    const { error } = await supabase.from('Deal').update({generate_invoice: generate_invoice}).eq('id', 1);
+
+    if (error) {
+        console.log("Couldn't update generate license");
+    } else {
+        console.log("Generate license updated");
+        return error;
+    }
+}
