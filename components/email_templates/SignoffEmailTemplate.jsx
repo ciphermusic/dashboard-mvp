@@ -5,7 +5,7 @@ const ACTION_URL = process.env.API_ENDPOINT + 'handle_sign_email_action';
 export const SignoffEmailTemplate = ({ firstName }) => (
   <div style={{ fontFamily: 'Arial, sans-serif', lineHeight: '1.6' }}>
     <h1 style={{ color: '#333' }}>Hello, {firstName}!</h1>
-    <p> Please find attached the Sync License Contract for the track <i>Everybody</i> by Don Bronco.</p>
+    <p> Please find attached the Sync License Contract for the track <i>Calm Down</i> by Rema.</p>
     <div style={{ marginTop: '20px' }}>
       <a
         href={`${ACTION_URL}?response=yes`}
