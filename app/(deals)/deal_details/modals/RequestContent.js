@@ -167,7 +167,7 @@ const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, se
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p><strong>Description of Song Use:</strong> The song &quot;Calm Down&quot; by Rema plays in the background throughout the commercial. The commercial features a series of beautiful, serene scenes of the resort and its surroundings, including beaches, guest rooms, and spa facilities. The upbeat and vibrant tone of the song enhances the lively and inviting atmosphere of the resort.</p>
+                  <p><strong>Description of Song Use:</strong> </p>
                   <p><strong>Timing of Song Use:</strong> Up to 30 seconds</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
@@ -200,7 +200,7 @@ const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, se
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p><strong>Media Rights Requesting:</strong> The commercial will be aired on television, internet (including social media platforms), and possibly in cinema ads.</p>
+                  <p><strong>Media Rights Requesting:</strong> </p>
                   <p><strong>Term:</strong> 2 years</p>
                   <p><strong>Territory:</strong> United States</p>
                 </Card.Body>
@@ -244,7 +244,7 @@ const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, se
                     <p style={{ marginBottom: '5px' }}>Email: jane.doe@marriott.com</p>
                   </div>
                   
-                  <p><strong>Phone:</strong> +1 301-380-3000</p>
+                  <p><strong>Phone:</strong> 1-301-380-3000</p>
                   <p><strong>Production Synopsis:</strong> The commercial showcases the luxurious amenities and breathtaking natural beauty of Marriott's Waikiki Beach Resort and Spa. Through stunning visuals and vibrant music, it invites viewers to experience the ultimate relaxation and enjoyment that awaits at this premier destination.</p>
                   <p><strong>Production Release / Air Date:</strong> Expected release in June 2024 </p>
                   <p><strong>Additional Information:</strong> The commercial aims to boost bookings and enhance the resort's brand image by appealing to a wide demographic of travelers looking for a luxurious and memorable vacation experience. This filled-out form is based on plausible assumptions for a typical TV commercial for a resort. Be sure to adjust or provide more accurate details as necessary!</p>
