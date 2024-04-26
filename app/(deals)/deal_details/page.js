@@ -91,7 +91,7 @@ const Deals = () => {
                             {'Song Name'}
                           </h3>
                           <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
-                            {'"Everybody" -'}
+                            {'"Calm Down" -'}
                           </h3>
                       </div>
                       <div className="mb-3 mb-lg-0">
@@ -99,17 +99,17 @@ const Deals = () => {
                             {'Requester'}
                           </h3>
                           <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px'}}>
-                            {'Ford Motor Company -'}
+                            {'Marriott International'}
                           </h3>
                       </div>
-                      <div className="mb-3 mb-lg-0">
+                      {/* <div className="mb-3 mb-lg-0">
                           <h3 className="mb-2 text-white" style={{ fontSize: '18px'}}>
                             {'Deal Code'}
                           </h3>
                           <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
                             {'#SF031924'}
                           </h3>
-                      </div>
+                      </div> */}
                   </div>
               </div>
           </Col>
@@ -119,11 +119,11 @@ const Deals = () => {
                       <Card.Body>
                           <div className="d-flex justify-content-between align-items-center mb-3">
                               <div>
-                                  <h4 className="mb-0">Requester Budget</h4>
+                                  <h4 className="mb-0">Intended Medium</h4>
                               </div>
                           </div>
                           <div>
-                              <h1 className="fw-bold">$265k - 340k</h1>
+                              <h1 className="fw-bold">TV, Internet</h1>
                               {/* <p className="mb-0" dangerouslySetInnerHTML={{ __html: info.statInfo}}></p> */}
                           </div>
                       </Card.Body>
@@ -203,8 +203,7 @@ const Deals = () => {
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date = {dealState < 4 ? "Pending Approval": "Approved on: 16:12 PM ET 03/29/2024"}
-                  // iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
+                  date = {dealState < 4 ? "Pending Approval": "Approved on: 1:22 PM ET 03/30/2024"}
                   iconStyle={
                     dealState < 4
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
@@ -215,17 +214,18 @@ const Deals = () => {
                   }
                   style={dealState < 4 ? {} : { opacity: 0.6 }}
                 >
-                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
-                  <h3 className="vertical-timeline-element-title">Negotiation - Recording Rights</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Publishing Rights</h3>
                   <p>
-                    Click to view terms.
+                  Click to view terms.
                   </p>
                 </button>
                 </VerticalTimelineElement>
                 <VerticalTimelineElement
                   visible = {true}
                   className="vertical-timeline-element--work"
-                  date = {dealState < 7 ? "Pending Approval": "Approved on: 1:22 PM ET 03/30/2024"}
+                  date = {dealState < 7 ? "Pending Approval": "Approved on: 16:12 PM ET 03/29/2024"}
+                  // iconStyle={{ background: 'rgb(75,255,96,1)', border: '5px solid lightgreen', padding: '2px'}}
                   iconStyle={
                     dealState < 7
                       ? { background: 'rgb(255,186,75,1)', border: '5px solid orange', padding: '2px'}
@@ -236,10 +236,10 @@ const Deals = () => {
                   }
                   style={dealState < 7 ? {} : { opacity: 0.6 }}
                 >
-                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_OTHER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
-                  <h3 className="vertical-timeline-element-title">Negotiation - Publishing Rights</h3>
+                <button onClick={() => handleShowModal(DealTimelineElementType.NEGOTIATION_MASTER)} style={{ all: 'unset', cursor: 'pointer', width: '100%', color: 'inherit', background: 'inherit' }}>
+                  <h3 className="vertical-timeline-element-title">Negotiation - Recording Rights</h3>
                   <p>
-                  Click to view terms.
+                    Click to view terms.
                   </p>
                 </button>
                 </VerticalTimelineElement>
@@ -293,7 +293,7 @@ const Deals = () => {
             <Modal.Title>Detail View</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal} 
+            <ModalContent type={modalType} dealState={dealState} setDealState={setDealState} setShowModal={setShowModal} currentPrice={currentPrice}
               setCurrentPrice={setCurrentPrice} generateLicense={generateLicense} setGenerateLicense={setGenerateLicense} publishers={publishers}
               setPublishers={setPublishers} writers={writers} setWriters={setWriters} generateInvoice={generateInvoice}
               setGenerateInvoice={setGenerateInvoice}/>
