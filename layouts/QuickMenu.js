@@ -92,7 +92,7 @@ const QuickMenu = ({signOut}) => {
                     className="rounded-circle"
                     id="dropdownUser">
                     <div className="avatar avatar-md avatar-indicators avatar-online">
-                        <Image alt="avatar" src='/images/avatar/believe-music.jpg' className="rounded-circle" />
+                        <Image alt="avatar" src='/images/avatar/Mavin_Records.png' className="rounded-circle" />
                     </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu
@@ -103,7 +103,7 @@ const QuickMenu = ({signOut}) => {
                     >
                     <Dropdown.Item as="div" className="px-4 pb-0 pt-2" bsPrefix=' '>
                             <div className="lh-1 ">
-                                <h5 className="mb-1"> Believe Music</h5>
+                                <h5 className="mb-1"> Mavin Records</h5>
                                 <Link href="#" className="text-inherit fs-6">View my profile</Link>
                             </div>
                             <div className=" dropdown-divider mt-3 mb-2"></div>
@@ -156,7 +156,7 @@ const QuickMenu = ({signOut}) => {
                     className="rounded-circle"
                     id="dropdownUser">
                     <div className="avatar avatar-md avatar-indicators avatar-online">
-                        <Image alt="avatar" src='/images/avatar/believe-music.jpg' className="rounded-circle" />
+                        <Image alt="avatar" src='/images/avatar/Mavin_Records.png' className="rounded-circle" />
                     </div>
                 </Dropdown.Toggle>
                 <Dropdown.Menu

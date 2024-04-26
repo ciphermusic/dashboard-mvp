@@ -3,9 +3,9 @@ import { Accordion, Card, Button, Container, Row, Col, Form } from 'react-bootst
 import { CheckAll, Chat } from  'react-bootstrap-icons';
 import Lottie from "lottie-react";
 import CheckMark from "../../../../public/images/animations/Checkmark.json";
-import { postDealState } from '../../../api/api_client';
+import { postDealState, postDealPrice } from '../../../api/api_client';
 
-const RequestContent = ({dealState, setDealState, setShowModal}) => {
+const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, setCurrentPrice}) => {
   const [activeKey, setActiveKey] = useState(null); // Initially, the first item is active
 
   // State initialization should be outside the return statement
@@ -13,6 +13,7 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
   const [approvedSecond, setApprovedSecond] = useState(false);
   const [approvedThird, setApprovedThird] = useState(false);
   const [approvedFourth, setApprovedFourth] = useState(false);
+  const [approvedFifth, setApprovedFifth] = useState(false);
 
   const [moreInformationRequested, setMoreInformationRequested] = useState(false);
 
@@ -40,6 +41,8 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
       setApprovedThird(true);
     } else if (eventKey === "4") {
       setApprovedFourth(true);
+    } else if (eventKey === "5") {  
+      setApprovedFifth(true);
     }
     setActiveKey(null);
   };
@@ -54,6 +57,8 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
       setApprovedThird(false);
     } else if (eventKey === "4") {
       setApprovedFourth(false);
+    } else if (eventKey === "5") {
+      setApprovedFifth(false);
     }
     setActiveKey(null);
   };
@@ -77,6 +82,25 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
     console.log("Request More Information button clicked!")
     setMoreInformationRequested(true);
     setActiveKey(null);
+  }
+  
+  const [price, setPrice] = useState(currentPrice === 0 ? '' : currentPrice);
+  const [showError, setShowError] = useState(false);
+
+  const handleSubmitPrice = async (e) => {
+    e.preventDefault();
+
+    if (!price) {
+      setShowError(true);
+    } else {
+      setShowError(false);
+      handleClick("5")
+
+      // const user = await getUserId();
+      const dealPriceError = await postDealPrice({userId: 1, price: price});
+
+      setCurrentPrice(price)
+    }
   }
 
   return (
@@ -109,8 +133,8 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p><strong>Song Title:</strong> Everybody</p>
-                  <p><strong>Artist/Recording:</strong> Don Broco</p>
+                  <p><strong>Song Title:</strong> Calm Down</p>
+                  <p><strong>Artist/Recording:</strong> Rema</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                   <Form.Label>Feedback for Song Details</Form.Label>
@@ -125,7 +149,6 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                   <Button className="mt-2" onClick={() => handleClickDeselect("1")}>Cancel</Button>
                 ) : (
                   <Button className="mt-2" onClick={() => handleClick("1")}>Approve</Button>
-                
                 )}
               </Accordion.Body>
             </Card>
@@ -143,8 +166,8 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p><strong>Description of Song Use:</strong> The song &quot;Everybody&quot; by Don Broco sets a vibrant and energetic tone for our commercial, which showcases the new Ford F-150 in a series of dynamic, high-energy scenes. The track begins playing as the truck is seen traversing various terrains - city streets, mountain roads, and desert landscapes. As the beat of the song picks up, the commercial cuts to scenes of the truck&apos;s interior features, highlighting its robustness and versatility. The song underlines the theme of empowerment and going beyond limits, aligning perfectly with the Ford F-150&apos;s brand message of strength, reliability, and adventure.</p>
-                  <p><strong>Timing of Song Use:</strong> Full length (up to 3 minutes)</p>
+                  <p><strong>Description of Song Use:</strong> The song &lsquo;Calm Down&rsquo; by Rema plays in the background throughout the commercial. The commercial features a series of beautiful, serene scenes of the resort and its surroundings, including beaches, guest rooms, and spa facilities. The upbeat and vibrant tone of the song enhances the lively and inviting atmosphere of the resort.</p>
+                  <p><strong>Timing of Song Use:</strong> Up to 30 seconds</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                     <Form.Label>Feedback for Usage Description</Form.Label>
@@ -176,9 +199,9 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Header>
               <Accordion.Body>
                 <Card.Body>
-                  <p><strong>Media Rights Requesting:</strong> TV, Internet, Social Media</p>
+                  <p><strong>Media Rights Requesting:</strong> The commercial will be aired on television, internet (including social media platforms), and possibly in cinema ads.</p>
                   <p><strong>Term:</strong> 2 years</p>
-                  <p><strong>Territory:</strong> Worldwide</p>
+                  <p><strong>Territory:</strong> United States</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                     <Form.Label>Feedback for Rights & Permissions</Form.Label>
@@ -212,17 +235,18 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
                 <Card.Body>
                   <div style={{ lineHeight: '1.2', margin: '0' }}>
                     <p id="info" style={{ marginBottom: '5px' }}><strong>Production Company Information: </strong></p>
-                    <p style={{ marginBottom: '5px' }}>Ford Motor Company</p>
-                    <p style={{ marginBottom: '5px' }}>1 American Rd, Dearborn, MI 48126</p>
-                    <p style={{ marginBottom: '5px' }}>Contact: Marketing Department</p>
-                    <p style={{ marginBottom: '5px' }}>Email: marketing@ford.com</p>
+                    <p style={{ marginBottom: '5px' }}>Marriott International</p>
+                    <p style={{ marginBottom: '5px' }}>Bethesda, MD 20817</p>
+                    <p style={{ marginBottom: '5px' }}>USA</p>
+                    <p style={{ marginBottom: '5px' }}>10400 Fernwood Road</p>
+                    <p style={{ marginBottom: '5px' }}>Contact: Jane Doe, Marketing Director</p>
+                    <p style={{ marginBottom: '5px' }}>Email: jane.doe@marriott.com</p>
                   </div>
                   
-                  <p><strong>Phone:</strong> 1-800-392-3673</p>
-                  <p><strong>Production Name:</strong> &quot;Unleash the New F-150&quot;</p>
-                  <p><strong>Production Synopsis:</strong> This commercial introduces the new Ford F-150, emphasizing its advanced features, durability, and design. Through a sequence of visually captivating scenes, the commercial aims to convey the essence of freedom and the spirit of adventure that the F-150 inspires. Targeting a wide audience of truck enthusiasts, families, and adventurers, the commercial will showcase the vehicle&apos;s capabilities in handling different lifestyles and adventures, reinforcing the Ford F-150&apos;s position as America&apos;s best-selling truck.</p>
-                  <p><strong>Production Release / Air Date:</strong> TBD</p>
-                  <p><strong>Additional Information:</strong> The song will primarily be used within the commercial framework as outlined, with potential extensions into behind-the-scenes content and promotional material for social media. We are open to negotiating terms for an extended usage period or broader media coverage as needed.</p>
+                  <p><strong>Phone:</strong> +1 301-380-3000</p>
+                  <p><strong>Production Synopsis:</strong> The commercial showcases the luxurious amenities and breathtaking natural beauty of Marriott&apos;s Waikiki Beach Resort and Spa. Through stunning visuals and vibrant music, it invites viewers to experience the ultimate relaxation and enjoyment that awaits at this premier destination.</p>
+                  <p><strong>Production Release / Air Date:</strong> Expected release in June 2024</p>
+                  <p><strong>Additional Information:</strong> The commercial aims to boost bookings and enhance the resort&apos;s brand image by appealing to a wide demographic of travelers looking for a luxurious and memorable vacation experience. This filled-out form is based on plausible assumptions for a typical TV commercial for a resort. Be sure to adjust or provide more accurate details as necessary!</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                   <Form.Label>Feedback for Production Details</Form.Label>
@@ -241,9 +265,44 @@ const RequestContent = ({dealState, setDealState, setShowModal}) => {
               </Accordion.Body>
             </Card>
             </Accordion.Item>
+            <Accordion.Item eventKey="5">
+            <Card>
+              <Accordion.Header> 
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
+                  Set Aside Price
+                  <div>
+                    {approvedFifth && <CheckAll color="green" size={20}/>}
+                  </div>
+                </div>
+              </Accordion.Header>
+              <Accordion.Body>
+                <Container className="mt-5">
+                  <form onSubmit={handleSubmitPrice}>
+                    <div className="form-group">
+                      <label htmlFor="priceInput">Price</label>
+                      <input
+                        type="number"
+                        className="form-control"
+                        id="priceInput"
+                        placeholder="Enter aside price"
+                        value={price}
+                        onChange={(e) => setPrice(e.target.value)} // Update state on input change
+                      />
+                      {showError && <div className="text-danger">Please enter a price.</div>} {/* Error message */}
+                    </div>
+                    {approvedFifth ? (
+                      <Button className="mt-2" onClick={() => handleClickDeselect("5")}>Cancel</Button>
+                    ) : (
+                      <button type="submit" className="btn btn-primary mt-3">Confirm Price</button>
+                    )}
+                  </form>
+                </Container>
+              </Accordion.Body>
+            </Card>
+            </Accordion.Item>
           </Accordion>
           
-          {(approvedFirst && approvedSecond && approvedThird && approvedFourth) ? (
+          {(approvedFirst && approvedSecond && approvedThird && approvedFourth && approvedFifth) ? (
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', padding: '12px' }}>
               <Button onClick={handleApproveRequest}>Approve Request</Button>
             </div>

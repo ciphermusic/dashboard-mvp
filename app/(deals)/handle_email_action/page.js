@@ -29,7 +29,7 @@ const ResponsePage = () => {
         if (shouldPostWriters) {
           await postWriters(updatedWriters);
           setWriters(updatedWriters);
-          postDealState(8);
+          postDealState(4);
         }
       } catch (error) {
         console.error('Error:', error);

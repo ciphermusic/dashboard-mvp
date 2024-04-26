@@ -5,7 +5,7 @@ import { getUserId, postDealPrice, postDealState } from '../../../api/api_client
 import Lottie from "lottie-react";
 import CheckMark from "../../../../public/images/animations/Checkmark.json";
 
-const NegoMasterContent = ({dealState, setDealState, setShowModal, setCurrentPrice}) => {
+const NegoMasterContent = ({dealState, setDealState, setShowModal, currentPrice, setCurrentPrice}) => {
   const [price, setPrice] = useState('');
   const [formSubmitted, setFormSubmitted] = useState(false);
   const [showError, setShowError] = useState(false);
@@ -21,17 +21,19 @@ const NegoMasterContent = ({dealState, setDealState, setShowModal, setCurrentPri
 
       const user = await getUserId();
       const dealPriceError = await postDealPrice({userId: user.id, price: price});
-      const dealStateError = await postDealState(4);
+      const dealStateError = await postDealState(8);
 
       if (dealPriceError || dealStateError) {
         console.log("Couldn't update deal price");
       }
 
       setTimeout(() => {
-        setCurrentPrice(price);
-        setDealState(4);
+        if (price > currentPrice) {
+          setCurrentPrice(price);
+        }
+        setDealState(8);
         setShowModal(false);
-      }, 800);
+      }, 500);
     }
   }
 

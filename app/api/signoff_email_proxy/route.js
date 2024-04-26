@@ -9,8 +9,8 @@ export async function POST(req) {
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
-      subject: 'Action Required: Sync Contract | Everybody - Don Bronco | Ford Motor Company',
-      react: SignoffEmailTemplate({ firstName: 'Jamie Lancaster' }),
+      subject: 'Action Required: Sync Contract | Calm Down - Rema | Marriott International',
+      react: SignoffEmailTemplate({ firstName: 'Uwaifo Osamudiame' }),
       attachments: [
         {
           filename: 'Sync_License_Everybody_Don_Bronco_09042024.pdf',
