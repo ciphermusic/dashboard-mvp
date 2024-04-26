@@ -244,9 +244,9 @@ const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, se
                   </div>
                   
                   <p><strong>Phone:</strong> +1 301-380-3000</p>
-                  <p><strong>Production Synopsis:</strong> The commercial showcases the luxurious amenities and breathtaking natural beauty of Marriott's Waikiki Beach Resort and Spa. Through stunning visuals and vibrant music, it invites viewers to experience the ultimate relaxation and enjoyment that awaits at this premier destination.</p>
+                  <p><strong>Production Synopsis:</strong> The commercial showcases the luxurious amenities and breathtaking natural beauty of Marriott&apos;s Waikiki Beach Resort and Spa. Through stunning visuals and vibrant music, it invites viewers to experience the ultimate relaxation and enjoyment that awaits at this premier destination.</p>
                   <p><strong>Production Release / Air Date:</strong> Expected release in June 2024</p>
-                  <p><strong>Additional Information:</strong> The commercial aims to boost bookings and enhance the resort's brand image by appealing to a wide demographic of travelers looking for a luxurious and memorable vacation experience. This filled-out form is based on plausible assumptions for a typical TV commercial for a resort. Be sure to adjust or provide more accurate details as necessary!</p>
+                  <p><strong>Additional Information:</strong> The commercial aims to boost bookings and enhance the resort&apos;s brand image by appealing to a wide demographic of travelers looking for a luxurious and memorable vacation experience. This filled-out form is based on plausible assumptions for a typical TV commercial for a resort. Be sure to adjust or provide more accurate details as necessary!</p>
                 </Card.Body>
                 <Form.Group controlId="productionDetailsFeedback">
                   <Form.Label>Feedback for Production Details</Form.Label>
