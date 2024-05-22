@@ -8,6 +8,19 @@ import { useState, useEffect } from 'react';
 import { ArrowRightCircle, ArrowLeftCircle, CheckAll } from 'react-bootstrap-icons';
 import Lottie from "lottie-react";
 import CheckMark from "../../../public/images/animations/Checkmark.json";
+import Select from 'react-select';
+
+const territories = [
+  { value: 'USA', label: 'USA' },
+  { value: 'Canada', label: 'Canada' },
+  { value: 'Europe', label: 'Europe' },
+  { value: 'Asia', label: 'Asia' },
+  { value: 'Australia', label: 'Australia' },
+  { value: 'Africa', label: 'Africa' },
+  { value: 'South America', label: 'South America' },
+  // Add more territories as needed
+];
+
 
 const RequestForm = () => {
   const router = useRouter();
@@ -30,7 +43,7 @@ const RequestForm = () => {
     distributionCompany: '',
     termDuration: '',
     recordingTitle: '',
-    territory: '',
+    territory: [],
     synopsis: '',
     descriptionOfUse: '',
     natureOfUse: '',
@@ -90,7 +103,7 @@ const RequestForm = () => {
       setAllFieldsFilledThree(false);
     }
 
-    if (distributionCompany && termDuration && recordingTitle && territory) {
+    if (distributionCompany && termDuration && recordingTitle && territory.length > 0) {
       setAllFieldsFilledFour(true);
     } else {
       setAllFieldsFilledFour(false);
@@ -114,6 +127,7 @@ const RequestForm = () => {
       setAllFieldsFilledSeven(false);
     }
 
+    console.log(formData.selectedMediaRight)
   }, [formData]);
 
   const handleChange = (e) => {
@@ -136,6 +150,13 @@ const RequestForm = () => {
         [name]: value
       });
     }
+  };
+
+  const handleSelectChange = (selectedOptions) => {
+    setFormData({
+      ...formData,
+      territory: selectedOptions
+    });
   };
 
   const handleNext = () => {
@@ -488,7 +509,66 @@ const RequestForm = () => {
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
                 </>
               )}
-              {step === 4 && (
+              {step === 4 && formData.selectedMediaRight === "internetMedia" && (
+                <>
+                  <Row>
+                    <Form.Group className="mb-3" controlId="distributionCompany">
+                      <Form.Label>Distribution/Production Company</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="distributionCompany"
+                        placeholder="Enter your name"
+                        required
+                        value={formData.distributionCompany}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="licenseDuration">
+                      <Form.Label>Term/Duration of License Requested</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="termDuration"
+                        placeholder="Enter Number of Months / Years, or in Perpetuity"
+                        required
+                        value={formData.termDuration}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    <Form.Group className="mb-3" controlId="recordingTitle">
+                      <Form.Label>Recording Title</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="recordingTitle"
+                        placeholder="Enter Your Recording Title"
+                        required
+                        value={formData.recordingTitle}
+                        onChange={handleChange}
+                      />
+                    </Form.Group>
+                    {/* <Form.Group className="mb-3" controlId="recordingArtist">
+                      <Form.Label>Territory</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="territory"
+                        placeholder="Enter Territory"
+                        required
+                        value={formData.territory}
+                        onChange={handleChange}
+                      />
+                    </Form.Group> */}
+                  </Row>
+                  <div className="d-flex justify-content-between pt-3">
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    {allFieldsFilledFour ? (
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    ) : (
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                    )}
+                  </div>
+                  {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
+                </>
+              )}
+              {step === 4 && formData.selectedMediaRight !== "internetMedia" && (
                 <>
                   <Row>
                     <Form.Group className="mb-3" controlId="distributionCompany">
@@ -525,14 +605,15 @@ const RequestForm = () => {
                       />
                     </Form.Group>
                     <Form.Group className="mb-3" controlId="recordingArtist">
-                      <Form.Label>Territory</Form.Label>
-                      <Form.Control
-                        type="text"
+                    <Form.Label>Territory</Form.Label>
+                      <Select
+                        isMulti
                         name="territory"
-                        placeholder="Enter Territory"
-                        required
+                        options={territories}
                         value={formData.territory}
-                        onChange={handleChange}
+                        onChange={handleSelectChange}
+                        className="basic-multi-select"
+                        classNamePrefix="select"
                       />
                     </Form.Group>
                   </Row>
