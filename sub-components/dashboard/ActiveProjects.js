@@ -4,8 +4,12 @@ import { ProgressBar, Col, Row, Card, Table, Image } from 'react-bootstrap';
 
 // import required data files
 import ActiveProjectsData from "data/dashboard/ActiveProjectsData";
+import NewProjectsData from "data/dashboard/NewProjectsData";
 
-const ActiveProjects = () => {
+const ActiveProjects = ({activeProject}) => {
+    console.log("Active project", activeProject)
+    let data = activeProject ? ActiveProjectsData : NewProjectsData;
+
     return (
         <Row className="mt-6">
             <Col md={12} xs={12}>
@@ -25,7 +29,7 @@ const ActiveProjects = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {ActiveProjectsData.map((item, index) => {
+                            {data.map((item, index) => {
                                 return (
                                     <tr key={index} onClick={() => window.location.href = '/deal_details'}>
                                         <td className="align-middle">

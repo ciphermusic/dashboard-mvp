@@ -12,14 +12,26 @@ import { ActiveProjects, Teams,
     TasksPerformance 
 } from "sub-components";
 
+import { useState } from 'react';
+
 // import required data files
 import ProjectsStatsData from "data/dashboard/ProjectsStatsData";
 
 import { useAuth } from '../authcontext';
 
+
 const Home = () => {
     const { isLoggedIn } = useAuth();
-        
+    const [activeProject, setActiveProject] = useState(true);
+    
+    const handleClick = (index) => {
+        if (index === 0) {
+            setActiveProject(false);
+        } else if (index === 1) {
+            setActiveProject(true);
+        }
+    };
+  
     return (   
         <div>
             {isLoggedIn() ? (
@@ -42,7 +54,7 @@ const Home = () => {
                             <Row className="justify-content-center">
                                 {ProjectsStatsData.map((item, index) => {
                                     return (
-                                        <Col xl={3} lg={6} md={12} xs={12} className="mt-6" key={index}>
+                                        <Col xl={3} lg={6} md={12} xs={12} className="mt-6" key={index} onClick={() => handleClick(index)} style={{ cursor: 'pointer' }}>
                                             <StatRightTopIcon info={item} />
                                         </Col>
                                     );
@@ -51,7 +63,8 @@ const Home = () => {
                         </Row>
 
                         {/* Active Projects  */}
-                        <ActiveProjects />
+                        
+                        <ActiveProjects activeProject={activeProject} />
 
                         <Row className="my-6">
                             <Col xl={4} lg={12} md={12} xs={12} className="mb-6 mb-xl-0">

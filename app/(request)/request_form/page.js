@@ -5,7 +5,7 @@ import { Row, Col, Card, Form, Button, ProgressBar, Container } from 'react-boot
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useState, useEffect } from 'react';
-import { ArrowRight, ArrowLeft, CheckAll } from 'react-bootstrap-icons';
+import { ArrowRightCircle, ArrowLeftCircle, CheckAll } from 'react-bootstrap-icons';
 import Lottie from "lottie-react";
 import CheckMark from "../../../public/images/animations/Checkmark.json";
 
@@ -197,9 +197,9 @@ const RequestForm = () => {
                   {/* Arrows */}
                   <div className="d-flex justify-content-end pt-3">
                     {allFieldsFilledOne ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -305,11 +305,11 @@ const RequestForm = () => {
                     </Col>
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     {allFieldsFilledTwo ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -478,11 +478,11 @@ const RequestForm = () => {
                     </Col>
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     {allFieldsFilledThree ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -537,11 +537,11 @@ const RequestForm = () => {
                     </Form.Group>
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     {allFieldsFilledFour ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -564,11 +564,11 @@ const RequestForm = () => {
                   </Form.Group>                
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     {allFieldsFilledFive ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -602,11 +602,11 @@ const RequestForm = () => {
                     </Form.Group>            
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     {allFieldsFilledSix ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -639,11 +639,11 @@ const RequestForm = () => {
                   </Form.Group>          
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     {allFieldsFilledSeven ? (
-                      <ArrowRight onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                      <ArrowRightCircle onClick={handleNext} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     ) : (
-                      <ArrowRight style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
+                      <ArrowRightCircle style={{ fontSize: '24px', cursor: 'pointer', color: 'black' }} />
                     )}
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
@@ -666,7 +666,7 @@ const RequestForm = () => {
                   </Form.Group>     
                   </Row>
                   <div className="d-flex justify-content-between pt-3">
-                    <ArrowLeft onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
+                    <ArrowLeftCircle onClick={handlePrevious} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                     <CheckAll onClick={handleSubmit} style={{ fontSize: '24px', cursor: 'pointer', color: 'blue' }} />
                   </div>
                   {errorMessage && <div style={{ color: 'red' }}>{errorMessage}</div>}
