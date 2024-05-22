@@ -9,14 +9,14 @@ export const ProjectsStats = [
     {
        id:1,
        title : "New",
-       value : 3,
+       value : 1,
        icon: <Briefcase size={18}/>,
        statInfo: '<span className="text-dark me-2">2</span> Unread Deals' 
     },
     {
         id:2,
         title : "Active",
-        value : 8,
+        value : 4,
         icon: <ListTask size={18}/>,
         statInfo: '<span className="text-dark me-2">3</span> New Tasks' 
      },
