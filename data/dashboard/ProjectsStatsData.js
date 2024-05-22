@@ -11,7 +11,7 @@ export const ProjectsStats = [
        title : "New",
        value : 1,
        icon: <Briefcase size={18}/>,
-       statInfo: '<span className="text-dark me-2">2</span> Unread Deals' 
+       statInfo: '<span className="text-dark me-2">1</span> Unread Deals' 
     },
     {
         id:2,
