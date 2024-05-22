@@ -103,7 +103,7 @@ const RequestForm = () => {
       setAllFieldsFilledThree(false);
     }
 
-    if (distributionCompany && termDuration && recordingTitle && territory.length > 0) {
+    if (distributionCompany && termDuration && (territory.length > 0 || selectedMediaRight === "internetMedia")) {
       setAllFieldsFilledFour(true);
     } else {
       setAllFieldsFilledFour(false);
@@ -298,7 +298,7 @@ const RequestForm = () => {
                     </Col>
                     <Col md={6}>
                       <Form.Group className="mb-3" controlId="username">
-                        <Form.Label>Username or email</Form.Label>
+                        <Form.Label>Username</Form.Label>
                         <Form.Control
                           type="email"
                           name="username"
@@ -534,7 +534,7 @@ const RequestForm = () => {
                         onChange={handleChange}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="recordingTitle">
+                    {/* <Form.Group className="mb-3" controlId="recordingTitle">
                       <Form.Label>Recording Title</Form.Label>
                       <Form.Control
                         type="text"
@@ -544,7 +544,7 @@ const RequestForm = () => {
                         value={formData.recordingTitle}
                         onChange={handleChange}
                       />
-                    </Form.Group>
+                    </Form.Group> */}
                     {/* <Form.Group className="mb-3" controlId="recordingArtist">
                       <Form.Label>Territory</Form.Label>
                       <Form.Control
@@ -593,7 +593,7 @@ const RequestForm = () => {
                         onChange={handleChange}
                       />
                     </Form.Group>
-                    <Form.Group className="mb-3" controlId="recordingTitle">
+                    {/* <Form.Group className="mb-3" controlId="recordingTitle">
                       <Form.Label>Recording Title</Form.Label>
                       <Form.Control
                         type="text"
@@ -603,7 +603,7 @@ const RequestForm = () => {
                         value={formData.recordingTitle}
                         onChange={handleChange}
                       />
-                    </Form.Group>
+                    </Form.Group> */}
                     <Form.Group className="mb-3" controlId="recordingArtist">
                     <Form.Label>Territory</Form.Label>
                       <Select
