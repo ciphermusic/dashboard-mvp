@@ -12,8 +12,8 @@ export async function POST(req) {
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
-      subject: 'Cipher: Calm Down by Rema requested by Marriott International',
-      react: EmailTemplate({ firstName: 'Uwaifo Osamudiame', price }),
+      subject: 'Cipher: Everbody by Don Broco requested by Ford Motor Company',
+      react: EmailTemplate({ firstName: 'Daniel Jamie Lancaster', price }),
     });
 
     return NextResponse.json({ message: "Email sent successfully, id=" + JSON.stringify(response) }, { status: 200 });

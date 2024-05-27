@@ -9,11 +9,11 @@ export async function POST(req) {
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
-      subject: 'Sync Invoice | Calm Down - Rema | Marriott International',
-      react: PaymentEmailTemplate({ firstName: 'Uwaifo Osamudiame' }),
+      subject: 'Sync Invoice | Everybody - Don Broco | Ford Motor Company',
+      react: PaymentEmailTemplate({ firstName: 'Daniel Jamie Lancaster' }),
       attachments: [
         {
-          filename: 'Sync_Invoice_Everybody_Don_Bronco_09042024.pdf',
+          filename: 'Sync_Invoice_Everybody_Don_Broco_09042024.pdf',
           path: 'https://joqfsynntlxnuyvthuua.supabase.co/storage/v1/object/public/cipher-docs/invoice_pdf.pdf',
         },
       ]
