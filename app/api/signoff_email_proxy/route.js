@@ -9,7 +9,7 @@ export async function POST(req) {
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
-      subject: 'Action Required: Sync Contract | Everybody - Don Broco | Marriott International',
+      subject: 'Action Required: Sync Contract | Everybody - Don Broco | Ford Motor Company',
       react: SignoffEmailTemplate({ firstName: 'Daniel Jamie Lancaster' }),
       attachments: [
         {
