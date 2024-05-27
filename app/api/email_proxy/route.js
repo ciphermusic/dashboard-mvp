@@ -12,7 +12,7 @@ export async function POST(req) {
     const response = await resend.emails.send({
       from: 'onboarding@resend.dev',
       to: ['ciphermusic.io@gmail.com'],
-      subject: 'Cipher: Everbody by Don Broco requested by Ford Motor Company',
+      subject: 'Cipher: Everybody by Don Broco requested by Ford Motor Company',
       react: EmailTemplate({ firstName: 'Daniel Jamie Lancaster', price }),
     });
 
