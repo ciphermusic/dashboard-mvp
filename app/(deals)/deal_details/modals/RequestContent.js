@@ -268,7 +268,7 @@ const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, se
             <Card>
               <Accordion.Header> 
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', width: '95%' }}>
-                  Set Aside Price
+                  Set Per Side Price
                   <div>
                     {approvedFifth && <CheckAll color="green" size={20}/>}
                   </div>
@@ -283,7 +283,7 @@ const RequestContent = ({dealState, setDealState, setShowModal, currentPrice, se
                         type="number"
                         className="form-control"
                         id="priceInput"
-                        placeholder="Enter aside price"
+                        placeholder="Enter per side price"
                         value={price}
                         onChange={(e) => setPrice(e.target.value)} // Update state on input change
                       />

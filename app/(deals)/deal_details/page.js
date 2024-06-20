@@ -134,7 +134,7 @@ const Deals = () => {
                       <Card.Body>
                           <div className="d-flex justify-content-between align-items-center mb-3">
                               <div>
-                                  <h4 className="mb-0">Current aside Price</h4>
+                                  <h4 className="mb-0">Current Per Side Price</h4>
                               </div>
                           </div>
                           <div>

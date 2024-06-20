@@ -59,7 +59,7 @@ const NegoMasterContent = ({dealState, setDealState, setShowModal, currentPrice,
                 type="number"
                 className="form-control"
                 id="priceInput"
-                placeholder="Enter aside price"
+                placeholder="Enter Per Side Price"
                 value={price}
                 onChange={(e) => setPrice(e.target.value)} // Update state on input change
               />
