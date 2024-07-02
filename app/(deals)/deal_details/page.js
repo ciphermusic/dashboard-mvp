@@ -152,7 +152,7 @@ const Deals = () => {
                               </div>
                           </div>
                           <div>
-                              <h1 className="fw-bold">05/15/2024</h1>
+                              <h1 className="fw-bold">07/15/2024</h1>
                           </div>
                       </Card.Body>
                   </Card>
