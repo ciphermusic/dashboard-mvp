@@ -112,7 +112,7 @@ const NegoOthersContent = ({writers, setWriters, publishers, setPublishers}) => 
                             {Object.values(writers).map((item, index) => {
                                 return (
                                 <tr key={index}>
-                                    <td className="align-middle">{item.name}   {index > 4 ? <ExclamationTriangle color="orange"></ExclamationTriangle> : <Check color="blue"></Check>}</td>
+                                    <td className="align-middle">{item.name}   {index > 1 ? <ExclamationTriangle color="orange"></ExclamationTriangle> : <Check color="blue"></Check>}</td>
                                     <td className="align-middle">{item.affiliation}</td>
                                     <td className="align-middle">{item.IPI}</td>
                                     <td className="align-middle">{item.contact}</td>
