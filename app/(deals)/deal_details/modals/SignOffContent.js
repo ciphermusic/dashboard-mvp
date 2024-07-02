@@ -111,7 +111,7 @@ const SignOffContent = ({ generateLicense, setGenerateLicense, publishers, write
                   </thead>
                   <tbody>
                       <tr style={{border: "3px solid blue"}}>
-                          <td className="align-middle">Believe Records   <Person color="blue"></Person></td>
+                          <td className="align-middle">Mavin Records   <Person color="blue"></Person></td>
                           <td className="align-middle">PRS</td>
                           <td className="align-middle">Placeholder</td>
                           <td className="align-middle">

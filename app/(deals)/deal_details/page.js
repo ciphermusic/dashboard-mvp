@@ -91,7 +91,7 @@ const Deals = () => {
                             {'Song Name'}
                           </h3>
                           <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px' }}>
-                            {'"Everybody" -'}
+                            {'"Calm Down" -'}
                           </h3>
                       </div>
                       <div className="mb-3 mb-lg-0">
@@ -99,7 +99,7 @@ const Deals = () => {
                             {'Requester'}
                           </h3>
                           <h3 className="mb-0 text-white" style={{ fontSize: '36px', fontWeight: 'bold', paddingRight: '12px'}}>
-                            {'Ford Motor Company'}
+                            {'Marriott International'}
                           </h3>
                       </div>
                       {/* <div className="mb-3 mb-lg-0">
